@@ -148,3 +148,6 @@ img { display: block; max-width: 100%; }
   .top nav a { padding: 8px 9px; }
   .proj-head { justify-content: space-between; }
 }
+
+/* GIF stickers with a white matte blend into the dotted paper */
+.proj-head img, .smile, .badge, .behind .hand { mix-blend-mode: multiply; }
