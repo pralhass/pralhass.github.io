@@ -49,7 +49,7 @@
         '<div class="txt"><span class="tag">' + esc(x.tag) + "</span><h3>" + esc(x.title) + '</h3><p class="sum">' + esc(x.summary) + '</p><span class="go">' + t.read + "</span></div></a>";
     }).join("");
     return '<main class="wrap">' +
-      '<section class="hero"><h1 class="word" aria-label="Portfolio">P<span class="pill" aria-hidden="true"></span>rtfolio</h1>' +
+      '<section class="hero"><div class="word-row"><h1 class="word" aria-label="Portfolio">P<span class="pill" aria-hidden="true"></span>rtfolio</h1><img class="smile" src="' + IMG.smile + '" alt=""></div>' +
       '<div class="hero-sub"><div><p class="who">Paulo Ralha, ' + u.role + '</p><p class="intro">' + esc(u.intro) + "</p></div>" +
       '<img class="badge" src="' + IMG.badge + '" alt=""></div></section>' +
 
