@@ -162,16 +162,16 @@
     var C = window.LP.camp, u = C[lang], B = C.base;
     var rolls = C.rollouts.map(function (r) {
       var t = r[lang], p0 = r.pages[0][0];
-      return '<article class="lp-rollout card"><div class="lp-r-txt"><h3 class="display">' + esc(t.t) + "</h3><p>" + esc(t.d) + '</p><span class="lp-pick">' + u.pick + '</span><div class="lp-mk" role="group" aria-label="' + esc(u.pick) + '">' +
-        r.pages.map(function (pg, i) { return '<button type="button" data-k="' + pg[0] + '" aria-pressed="' + (i === 0) + '">' + esc(pg[1]) + "</button>"; }).join("") +
-        '</div></div><div class="lp-browser"><div class="lp-bar"><i></i><i></i><i></i><span>' + esc(u.scroll) + '</span></div><div class="lp-view" tabindex="0"><img src="' + B + p0 + '.jpg" alt="' + esc(t.t + ", " + r.pages[0][1]) + '" loading="lazy"></div></div></article>';
+      return '<article class="lp-rollout card"><div class="lp-r-txt"><h3 class="display">' + esc(t.t) + "</h3><p>" + esc(t.d) + "</p>" + (r.pages.length > 1 ? '<span class="lp-pick">' + u.pick + '</span><div class="lp-mk" role="group" aria-label="' + esc(u.pick) + '">' +
+        r.pages.map(function (pg, i) { return '<button type="button" data-k="' + pg[0] + '" aria-pressed="' + (i === 0) + '">' + esc(pg[1]) + "</button>"; }).join("") + "</div>" : "") +
+        '</div><div class="lp-browser"><div class="lp-bar"><i></i><i></i><i></i><span>' + esc(u.scroll) + '</span></div><div class="lp-view" tabindex="0"><img src="' + B + p0 + '.jpg" alt="' + esc(t.t + ", " + r.pages[0][1]) + '" loading="lazy"></div></div></article>';
     }).join("");
     var gal = C.gallery.map(function (g) {
-      return '<button type="button" class="lp-g card" data-k="' + g[0] + '"><span class="lp-g-img"><img src="' + B + g[0] + '-t.jpg" alt="" loading="lazy"></span><span class="lp-g-txt"><strong>' + esc(g[3][lang]) + '</strong><span>' + g[1] + " · " + g[2] + "</span></span></button>";
+      return '<button type="button" class="lp-g card" data-k="' + g[0] + '"' + (g[4] ? " data-pages='" + JSON.stringify(g[4]) + "'" : "") + '><span class="lp-g-img"><img src="' + B + g[0] + '-t.jpg" alt="" loading="lazy"></span><span class="lp-g-txt"><strong>' + esc(g[3][lang]) + '</strong><span>' + g[1] + " · " + g[2] + "</span></span></button>";
     }).join("");
     return '<section class="lp-camp"><div class="lp-camp-head"><span class="tag">' + u.kicker + '</span><h2 class="display">' + esc(u.title) + "</h2><p>" + esc(u.intro) + "</p></div>" + rolls +
       '<div class="sec-head lp-gal-head"><h2 class="display">' + u.galTitle + "</h2><p>" + u.galText + '</p></div><div class="lp-gal">' + gal + "</div>" +
-      '<div class="lb lp-lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + u.close + '</button><div class="lp-lb-view" tabindex="0"><img alt=""></div><p class="lb-cap"></p></div></div></section>';
+      '<div class="lb lp-lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + u.close + '</button><div class="lb-tabs lp-lb-tabs"></div><div class="lp-lb-view" tabindex="0"><img alt=""></div><p class="lb-cap"></p></div></div></section>';
   }
 
   function bindLP() {
@@ -189,6 +189,9 @@
     document.querySelectorAll(".lp-g").forEach(function (g) {
       g.addEventListener("click", function () {
         last = g; li.src = C.base + g.dataset.k + ".jpg"; li.alt = g.querySelector("strong").textContent;
+        var tabs = lb.querySelector(".lp-lb-tabs"), pages = g.dataset.pages ? JSON.parse(g.dataset.pages) : [];
+        tabs.innerHTML = pages.map(function (pg) { return '<button type="button" data-k="' + pg[0] + '" aria-pressed="' + (pg[0] === g.dataset.k) + '">' + esc(pg[1]) + "</button>"; }).join("");
+        tabs.querySelectorAll("button").forEach(function (t) { t.addEventListener("click", function () { tabs.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", o === t); }); li.src = C.base + t.dataset.k + ".jpg"; lv.scrollTop = 0; }); });
         cap.textContent = g.querySelector("strong").textContent + " · " + g.querySelector(".lp-g-txt span").textContent;
         lb.hidden = false; lv.scrollTop = 0; lb.querySelector(".lb-x").focus();
       });

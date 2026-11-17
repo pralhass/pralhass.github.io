@@ -26,12 +26,12 @@ window.LP = {
 window.LP.camp = {
   base: "../media/lp/",
   rollouts: [
-    { id: "x23", pages: [["xmas2023-pt", "PT"], ["xmas2023-pt-sco", "PT scooters"], ["xmas2023-es", "ES"], ["xmas2023-be-fr", "BE-FR"], ["xmas2023-be-nl", "BE-NL"], ["xmas2023-ch-de", "CH-DE"], ["xmas2023-ch-fr", "CH-FR"], ["xmas2023-ch-it", "CH-IT"], ["xmas2023-sk", "SK"], ["xmas2023-cz", "CZ"]],
-      en: { t: "Christmas 2023, one campaign in ten versions", d: "One Christmas idea adapted for eight markets and two product lines. Each market kept its own offer, form and legal text, the visual language and the page structure were shared." },
-      pt: { t: "Natal 2023, uma campanha em dez versões", d: "Uma ideia de Natal adaptada a oito mercados e duas linhas de produto. Cada mercado manteve a sua oferta, formulário e texto legal, a linguagem visual e a estrutura da página eram comuns." } },
     { id: "x22", pages: [["natal2022-pt", "PT"], ["natal2022-pt-sco", "PT scooters"], ["navidad2022-es", "ES"], ["xmas2022-be-fr", "BE-FR"], ["xmas2022-be-nl", "BE-NL"], ["xmas2022-sk", "SK"], ["xmas2022-cz", "CZ"]],
       en: { t: "Christmas 2022, seven markets", d: "The offer changed from market to market, VAT paid by Stannah, a smart TV, a free scooter, while the design system, the Santa photography and the page flow were shared." },
-      pt: { t: "Natal 2022, sete mercados", d: "A oferta mudava de mercado para mercado, IVA oferecido, uma smart TV, uma scooter grátis, mas o sistema de design, a fotografia do Pai Natal e o fluxo da página eram comuns." } }
+      pt: { t: "Natal 2022, sete mercados", d: "A oferta mudava de mercado para mercado, IVA oferecido, uma smart TV, uma scooter grátis, mas o sistema de design, a fotografia do Pai Natal e o fluxo da página eram comuns." } },
+    { id: "sum23", pages: [["summer2023-pt", "PT"]],
+      en: { t: "Summer 2023, a surprise at the home visit", d: "A new look for the summer campaign: a bright outdoor hero, the stairlift placed in a family garden scene, and an offer kept as a surprise, revealed only at the free assessment visit. Every block on the page leads to one action, booking that visit." },
+      pt: { t: "Verão 2023, uma surpresa na visita", d: "Um visual novo para a campanha de verão: um hero exterior e luminoso, o elevador de escadas integrado numa cena de família no jardim, e uma oferta mantida em surpresa, revelada só na visita de avaliação gratuita. Cada bloco da página leva a uma única ação, marcar essa visita." } }
   ],
   gallery: [
     ["mundial2026-pt", "PT", "2026", { en: "World Cup", pt: "Mundial" }],
@@ -40,7 +40,7 @@ window.LP.camp = {
     ["ferias2024-pt", "PT", "2024", { en: "Win a holiday for two", pt: "Ganhe férias para dois" }],
     ["ambassador-pt", "PT", "2024", { en: "Ambassador programme", pt: "Programa de embaixadores" }],
     ["ambassador-be", "BE", "2024", { en: "Ambassador programme", pt: "Programa de embaixadores" }],
-    ["summer2023-pt", "PT", "2023", { en: "Summer, surprise offer", pt: "Verão, oferta surpresa" }],
+    ["xmas2023-es", "PT, ES, BE, CH, SK, CZ", "2023", { en: "Christmas, ten versions", pt: "Natal, dez versões" }, [["xmas2023-pt", "PT"], ["xmas2023-pt-sco", "PT scooters"], ["xmas2023-es", "ES"], ["xmas2023-be-fr", "BE-FR"], ["xmas2023-be-nl", "BE-NL"], ["xmas2023-ch-de", "CH-DE"], ["xmas2023-ch-fr", "CH-FR"], ["xmas2023-ch-it", "CH-IT"], ["xmas2023-sk", "SK"], ["xmas2023-cz", "CZ"]]],
     ["primavera2023-pt-sco", "PT", "2023", { en: "Spring, scooters", pt: "Primavera, scooters" }],
     ["compreagora2023-pt", "PT", "2022", { en: "Buy now, pay next year", pt: "Compre agora, pague em 2023" }],
     ["blackmonth-pt", "PT", "2022", { en: "Black Month, stairlifts", pt: "Black Month, elevadores de escadas" }],
