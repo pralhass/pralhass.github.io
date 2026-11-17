@@ -3,6 +3,9 @@
 window.ADS = {
   base: "../media/ads/",
   loose: [
+    { file: "uplifts", formats: ["story"], market: { en: "Not yet launched", pt: "Ainda não lançado" },
+      en: { t: "The grandma who rises through the floor", d: "UGC-style home lift ad made with generative AI: she rises through the floor in her home lift, coffee in hand." },
+      pt: { t: "A avó que aparece pelo chão", d: "Anúncio de elevador doméstico em estilo UGC, feito com IA generativa: ela aparece pelo chão no elevador doméstico, de café na mão." }, video: true },
     { file: "8097", market: { en: "All markets", pt: "Todos os mercados" },
       en: { t: "You always have choice", d: "Care home or staying home: a side-by-side comparison, made once and rolled out in bulk." },
       pt: { t: "You always have choice", d: "Lar ou ficar em casa: uma comparação lado a lado, criada uma vez e lançada em bulk." }, video: true },

@@ -187,3 +187,6 @@ img { display: block; max-width: 100%; }
 @media (max-width: 1000px) { .ads-grid { grid-template-columns: repeat(2, 1fr); } .mk-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px) { .sec-head, .bulk-head { grid-template-columns: 1fr; } .sec-head p { justify-self: start; } .mk-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .ad { transition: none; } .ad:hover { transform: none; } }
+/* Story-only ads: keep the 4:5 card, show the 9:16 video centred inside it */
+.ad-media.is-story { background: #1f2328; }
+.ad-media.is-story video, .ad-media.is-story img { object-fit: contain; }

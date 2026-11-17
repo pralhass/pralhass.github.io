@@ -88,11 +88,11 @@
   function adsSections() {
     var A = window.ADS, ui = A.ui[lang], b = A.bulk, bt = b[lang];
     var wall = A.loose.map(function (a, i) {
-      var x = a[lang], src = A.base + a.file + "-post";
+      var x = a[lang], f0 = (a.formats || ["post"])[0], src = A.base + a.file + "-" + f0;
       var media = a.video
         ? '<video muted loop playsinline preload="none" poster="' + src + '.jpg" data-src="' + src + '.mp4"></video>'
         : '<img src="' + src + '.jpg" alt="" loading="lazy">';
-      return '<button type="button" class="ad card" data-ad="' + i + '"><span class="ad-media">' + media + "</span>" +
+      return '<button type="button" class="ad card" data-ad="' + i + '"><span class="ad-media' + (f0 === "story" ? " is-story" : "") + '">' + media + "</span>" +
         '<span class="ad-txt"><span class="tag">' + esc(a.market[lang]) + "</span><strong>" + esc(x.t) + "</strong><span>" + esc(x.d) + "</span></span></button>";
     }).join("");
     var tiles = b.markets.map(function (m, i) {
@@ -129,7 +129,8 @@
     document.querySelectorAll("[data-ad]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var a = A.loose[+btn.dataset.ad], base = A.base + a.file;
-        tabs.innerHTML = '<button type="button" aria-pressed="true" data-f="post">' + ui.feed + '</button><button type="button" aria-pressed="false" data-f="story">' + ui.story + "</button>";
+        var fm = a.formats || ["post", "story"];
+        tabs.innerHTML = fm.length < 2 ? "" : '<button type="button" aria-pressed="true" data-f="post">' + ui.feed + '</button><button type="button" aria-pressed="false" data-f="story">' + ui.story + "</button>";
         tabs.querySelectorAll("button").forEach(function (t) {
           t.addEventListener("click", function () {
             tabs.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", o === t); });
@@ -137,7 +138,7 @@
           });
         });
         cap.textContent = a[lang].t + " | " + a.market[lang];
-        show(base + "-post", a.video); open();
+        show(base + "-" + fm[0], a.video); open();
       });
     });
     document.querySelectorAll("[data-bulk]").forEach(function (btn) {
