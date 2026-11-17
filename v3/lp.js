@@ -12,9 +12,9 @@ window.LP = {
   },
   pt: {
     kicker: "Testes A/B em números",
-    title: "Pequenas mudanças, medidas",
-    intro: "A minha equipa desenhou e montou as variantes dos testes de landing pages feitos nos mercados da Stannah. Estes são os testes com resultado positivo desde janeiro de 2025, medidos na taxa de conversão face ao controlo.",
-    stats: [["64", "testes positivos desde 2025"], ["19", "mercados e línguas"], ["+37%", "subida mediana da conversão"], ["8", "testes que mais do que duplicaram a conversão"]],
+    title: "Pequenas mudanças, resultados medidos",
+    intro: "A minha equipa desenhou e construiu as variantes dos testes A/B às landing pages da Stannah nos vários mercados. Aqui estão os testes com resultado positivo desde janeiro de 2025, medidos pela taxa de conversão face à versão de controlo.",
+    stats: [["64", "testes positivos desde 2025"], ["19", "mercados e línguas"], ["+37%", "subida mediana da taxa de conversão"], ["8", "testes que mais do que duplicaram a conversão"]],
     topTitle: "As maiores subidas",
     top: [["BE-NL", "Formulário por passos na página de preço", "+212%"], ["CH-DE", "Novas fotografias do elevador doméstico", "+204%"], ["ES", "Página da cadeira elevatória de exterior", "+185%"], ["CH-FR", "Mensagem “Aumente o valor da sua casa” no hero", "+155%"], ["BE-NL", "Imagens do produto na página de preço", "+131%"], ["UK", "Página mais curta, FAQ e CTA final à mão", "+126%"], ["SK", "“95% dizem que a Stannah melhorou o seu dia a dia”", "+126%"], ["ES", "Responder mais cedo à ansiedade com o preço", "+93%"]],
     rollTitle: "Uma ideia, vários mercados",
@@ -73,5 +73,5 @@ window.LP.camp = {
     ["natale2019-it", "IT", "2019", { en: "Christmas offer", pt: "Oferta de Natal" }]
   ],
   en: { kicker: "Campaign landing pages", title: "Campaign pages, built to convert", intro: "Product launches, TV and influencer campaigns, seasonal offers, prize draws and referral programmes, from Italy and Spain to the US and the Emirates. My team designed and built the landing pages for the paid campaigns, often one design rolled out to several markets at once.", pick: "Choose a market", scroll: "Scroll inside the page", galTitle: "More campaigns", galText: "Open any page to see it full length.", close: "Close" },
-  pt: { kicker: "Landing pages de campanha", title: "Páginas de campanha, feitas para converter", intro: "Lançamentos de produto, campanhas de TV e com influenciadores, ofertas sazonais, sorteios e programas de referência, de Itália e Espanha aos EUA e aos Emirados. A minha equipa desenhou e montou as landing pages das campanhas pagas, muitas vezes um design lançado em vários mercados ao mesmo tempo.", pick: "Escolha um mercado", scroll: "Faça scroll dentro da página", galTitle: "Mais campanhas", galText: "Abra qualquer página para a ver completa.", close: "Fechar" }
+  pt: { kicker: "Landing pages de campanha", title: "Páginas de campanha, feitas para converter", intro: "Lançamentos de produto, campanhas de TV e com influenciadores, ofertas sazonais, sorteios e programas de referência, de Itália e Espanha aos EUA e aos Emirados. A minha equipa desenhou e montou as landing pages das campanhas pagas, muitas vezes um design lançado em vários mercados ao mesmo tempo.", pick: "Escolha um mercado", scroll: "Deslize para ver a página toda", galTitle: "Mais campanhas", galText: "Clique numa página para a ver completa.", close: "Fechar" }
 };

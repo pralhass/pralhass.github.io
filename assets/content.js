@@ -33,26 +33,26 @@ window.SITE = {
     },
     pt: {
       role: "Design & Multimedia Manager",
-      intro: "Lidero a equipa de design que faz os anúncios do paid media da Stannah em cerca de 40 mercados. Quinze anos de motion, vídeo e produção de TV, agora a trabalhar com dados e IA generativa para testar mais criativos, mais depressa.",
-      nav: { work: "Trabalho", about: "Sobre", contact: "Contacto" },
+      intro: "Lidero a equipa de design que cria os anúncios das campanhas pagas da Stannah em cerca de 40 mercados. Tenho quinze anos de experiência em motion design, vídeo e produção de televisão, e hoje junto dados e IA generativa para testar mais criativos em menos tempo.",
+      nav: { work: "Trabalhos", about: "Sobre mim", contact: "Contacto" },
       showreel: "Showreel 2026",
-      showreelSoon: "Novo showreel em produção",
-      work: "Trabalho selecionado",
-      viewCase: "Ver caso",
+      showreelSoon: "Novo showreel em preparação",
+      work: "Trabalhos selecionados",
+      viewCase: "Ver projeto",
       about: "Sobre mim",
       experience: "Experiência",
       contact: "Contacto",
-      contactText: "Disponível para novas funções em liderança criativa, criativos de performance e motion design. Vivo perto de Braga e estou aberto a trabalho híbrido e remoto.",
+      contactText: "Estou disponível para novos desafios em liderança criativa, criativos de performance e motion design. Vivo perto de Braga e aceito trabalho híbrido ou remoto.",
       email: "Email",
       cv: "CV",
       cvSoon: "Download disponível em breve",
-      back: "Todo o trabalho",
+      back: "Todos os trabalhos",
       challenge: "O desafio",
       approach: "O que fiz",
       result: "Resultado",
-      gallery: "Trabalho",
+      gallery: "Trabalhos",
       imageSoon: "Imagem em breve",
-      next: "Caso seguinte",
+      next: "Próximo projeto",
       formats: { "16/9": "16:9", "4/5": "4:5", "9/16": "9:16" }
     }
   },
@@ -64,9 +64,9 @@ window.SITE = {
       "What I care about: creative that is tested, not guessed, and production systems that let a small team do the work of a big one."
     ],
     pt: [
-      "Comecei atrás da câmara, a filmar e a editar vídeo, e passei vários anos em 3D estereoscópico, CGI e VFX antes de passar para vídeo de marca e motion design no retalho de moda.",
-      "Na Stannah passei de motion designer, a produzir spots de TV da pré-produção à pós-produção, a responsável pelo departamento de design e multimédia. Hoje a minha equipa produz anúncios estáticos e em vídeo, landing pages e vídeo para paid media na Europa e nos EUA.",
-      "O que me interessa: criativos testados e não adivinhados, e processos de produção que deixam uma equipa pequena fazer o trabalho de uma grande."
+      "Comecei atrás da câmara, a filmar e a editar vídeo. Depois passei vários anos a trabalhar em 3D estereoscópico, CGI e efeitos visuais, até chegar ao vídeo de marca e ao motion design numa marca de moda.",
+      "Na Stannah comecei como motion designer, a produzir spots de televisão da pré-produção à pós-produção, e hoje dirijo o departamento de design e multimédia. A minha equipa cria anúncios estáticos e em vídeo, landing pages e vídeos para as campanhas pagas na Europa e nos Estados Unidos.",
+      "Acredito em criativos que se testam em vez de se adivinharem, e em processos que permitem a uma equipa pequena fazer o trabalho de uma grande."
     ]
   },
 
@@ -96,12 +96,12 @@ window.SITE = {
         result: "Output went from 13 to 38 creative tests a month with the same team. Across 175 measured tests, 37% beat the control on CTR (median uplift +38%), and 39 creatives cut CPA by a median of 33%."
       },
       pt: {
-        title: "Testes de criativos em escala",
+        title: "Testes de criativos em grande escala",
         tag: "Meta Ads · mais de 20 mercados",
-        summary: "175 testes de anúncios medidos em 13 meses. 37% superaram o controlo em CTR.",
-        challenge: "O paid media precisava de muito mais testes de criativos do que uma equipa de três designers conseguia produzir mercado a mercado.",
-        approach: "Redesenhei a produção para que cada conceito de anúncio seja criado uma vez e adaptado a todas as línguas, com briefings partilhados, regras de nomenclatura e um único fluxo de aprovação com os mercados.",
-        result: "A produção passou de 13 para 38 testes de criativos por mês com a mesma equipa. Em 175 testes medidos, 37% superaram o controlo em CTR (subida mediana de 38%) e 39 criativos baixaram o CPA numa mediana de 33%."
+        summary: "175 testes de anúncios medidos em 13 meses, com 37% a superar o controlo em CTR.",
+        challenge: "As campanhas pagas precisavam de muito mais testes de criativos do que uma equipa de três designers conseguia produzir, mercado a mercado.",
+        approach: "Reorganizei a produção para que cada conceito de anúncio seja criado uma única vez e depois adaptado a todas as línguas, com briefings comuns, regras de nomenclatura e um só circuito de aprovação com os mercados.",
+        result: "Com a mesma equipa, passámos de 13 para 38 testes de criativos por mês. Dos 175 testes medidos, 37% superaram o controlo em CTR (subida mediana de 38%) e 39 criativos reduziram o CPA, com uma descida mediana de 33%."
       },
       images: 4
     },
@@ -117,12 +117,12 @@ window.SITE = {
         result: "AI-generated assets are now part of regular Meta Ads production, including UGC-style video ads, and the team works from shared AI tools instead of one-off experiments."
       },
       pt: {
-        title: "Produção de anúncios com IA generativa",
+        title: "Anúncios produzidos com IA generativa",
         tag: "Nano Banana · Seedance · Veo · Claude",
-        summary: "Levar a imagem e o vídeo com IA para uma equipa de anúncios a sério, dos primeiros testes à produção diária.",
-        challenge: "Para chegar ao volume pedido pelo paid media, a equipa tinha de fazer mais anúncios sem mais pessoas nem mais horas.",
-        approach: "Integrei a imagem e o vídeo generativos na produção diária, criei uma biblioteca partilhada de referências, escrevi fluxos de IA para criação de anúncios, QA e prompts de vídeo, e dei formação prática à equipa.",
-        result: "Os assets gerados com IA fazem hoje parte da produção regular de Meta Ads, incluindo anúncios de vídeo em estilo UGC, e a equipa trabalha com ferramentas de IA partilhadas em vez de experiências soltas."
+        summary: "Levar a imagem e o vídeo gerados com IA dos primeiros testes à produção diária de uma equipa de anúncios.",
+        challenge: "Para responder ao volume pedido pelas campanhas pagas, a equipa tinha de produzir mais anúncios sem aumentar o número de pessoas nem de horas.",
+        approach: "Integrei a imagem e o vídeo gerados com IA na produção diária, criei uma biblioteca de referências partilhada, desenvolvi fluxos de IA para criar anúncios, fazer controlo de qualidade e escrever prompts de vídeo, e dei formação prática à equipa.",
+        result: "Hoje os conteúdos gerados com IA fazem parte da produção regular de anúncios para Meta, incluindo vídeos em estilo UGC, e a equipa usa ferramentas de IA comuns em vez de experiências isoladas."
       },
       images: 4
     },
@@ -140,10 +140,10 @@ window.SITE = {
       pt: {
         title: "Spots de televisão",
         tag: "Da pré-produção à pós-produção",
-        summary: "Spots de TV da Stannah, do guião e da rodagem à edição e ao motion.",
-        challenge: "Produzir spots prontos para televisão dentro de casa, com um orçamento de marca.",
-        approach: "Tratei de toda a cadeia: pré-produção, gravação, realização e pós-produção, incluindo edição e motion graphics em After Effects.",
-        result: "Spots produzidos do início ao fim dentro de casa."
+        summary: "Spots de televisão da Stannah, do guião e da rodagem à montagem e ao motion design.",
+        challenge: "Produzir internamente spots com qualidade de televisão, com um orçamento de marca.",
+        approach: "Acompanhei todo o processo: pré-produção, rodagem, realização e pós-produção, incluindo montagem e motion graphics em After Effects.",
+        result: "Spots produzidos de raiz pela equipa interna, do primeiro esboço à versão final para televisão."
       },
       images: 3
     },
@@ -161,10 +161,10 @@ window.SITE = {
       pt: {
         title: "Landing pages e testes A/B",
         tag: "Unbounce · WordPress",
-        summary: "Desenhar e testar as páginas onde o tráfego pago aterra.",
-        challenge: "Todas as campanhas pagas aterram numa página, e cada oferta sazonal precisa da sua própria página, em vários mercados e línguas, com prazos apertados.",
-        approach: "A minha equipa desenhou e montou as landing pages em Unbounce e WordPress: páginas de campanha para ofertas de Natal, primavera e verão e passatempos, e as variantes dos testes A/B nos vários mercados.",
-        result: "Páginas de campanha lançadas em vários mercados ao mesmo tempo, e 64 testes A/B com resultado positivo desde 2025."
+        summary: "Desenhar e testar as páginas onde chega o tráfego das campanhas pagas.",
+        challenge: "Todas as campanhas pagas levam o utilizador a uma página, e cada oferta sazonal precisa da sua, em vários mercados e línguas e com prazos curtos.",
+        approach: "A minha equipa desenhou e construiu as landing pages em Unbounce e WordPress: páginas para campanhas de Natal, primavera e verão e para passatempos, e as variantes dos testes A/B nos vários mercados.",
+        result: "Páginas de campanha lançadas em vários mercados em simultâneo e 64 testes A/B com resultado positivo desde 2025."
       },
       images: 3
     },
@@ -174,18 +174,18 @@ window.SITE = {
       en: {
         title: "Motion design and video",
         tag: "After Effects · Premiere Pro",
-        summary: "Animation, explainers and video for brands in fashion retail and home mobility.",
-        challenge: "Turn product stories into short videos that work on TV, in store and on social.",
-        approach: "Motion graphics, filming and editing for Stannah and TIFFOSI, including in-store digital signage.",
+        summary: "Animation, explainers and brand video for Stannah.",
+        challenge: "Turn product stories into short videos that work on TV, on social and on the website.",
+        approach: "Motion graphics, filming and editing for Stannah, across every format.",
         result: "A body of brand video across formats, from 9:16 social to 16:9 broadcast."
       },
       pt: {
         title: "Motion design e vídeo",
         tag: "After Effects · Premiere Pro",
-        summary: "Animação, vídeos explicativos e vídeo para marcas de moda e de mobilidade em casa.",
-        challenge: "Transformar histórias de produto em vídeos curtos que funcionem na TV, em loja e nas redes sociais.",
-        approach: "Motion graphics, filmagem e edição para a Stannah e a TIFFOSI, incluindo digital signage em loja.",
-        result: "Um conjunto de vídeo de marca em vários formatos, do 9:16 para redes sociais ao 16:9 para televisão."
+        summary: "Animação, vídeos explicativos e vídeo de marca para a Stannah.",
+        challenge: "Transformar histórias de produto em vídeos curtos que funcionem na televisão, nas redes sociais e no site.",
+        approach: "Motion graphics, filmagem e montagem para a Stannah, em todos os formatos.",
+        result: "Uma biblioteca de vídeo de marca em vários formatos, do 9:16 para as redes sociais ao 16:9 para televisão."
       },
       images: 3
     },

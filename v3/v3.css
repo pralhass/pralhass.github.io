@@ -429,3 +429,11 @@ img { display: block; max-width: 100%; }
 @media (max-width: 900px) { .lp-rollout { grid-template-columns: 1fr; } .lp-view { height: 60vh; } }
 @media (prefers-reduced-motion: reduce) { .lp-g-img img { transition: none; } .lp-g:hover .lp-g-img img { transform: none; } }
 .edu-h { margin-top: 28px; }
+.top nav a.nav-cv { background: var(--yellow); font-weight: 700; margin: 0 4px; }
+.top nav a.nav-cv:hover { background: var(--yellow); filter: brightness(.95); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.hero-cta a { text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 999px; border: 2px solid var(--ink); }
+.btn-cv { background: var(--ink); color: #fff; }
+.btn-ln { background: #fff; color: var(--ink); }
+.hero-cta a:focus-visible, .top nav a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+@media (max-width: 520px) { .top nav a:not(.nav-cv) { display: none; } }

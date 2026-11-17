@@ -19,7 +19,7 @@
   };
   var T = {
     en: { behind: "Behind the visuals", career: "Career", edu: "Education", toolkit: "Toolkit", projects: "Featured projects", read: "Read the case" },
-    pt: { behind: "Por trás dos visuais", career: "Percurso", edu: "Formação académica", toolkit: "Ferramentas", projects: "Projetos em destaque", read: "Ver o caso" }
+    pt: { behind: "Quem está por trás", career: "Percurso", edu: "Formação académica", toolkit: "Ferramentas", projects: "Projetos em destaque", read: "Ver o projeto" }
   };
   var TOOLS = ["Premiere Pro", "After Effects", "Photoshop", "Illustrator", "Adobe Express", "Canva", "Higgsfield", "Seedance", "Claude", "Meta Ads", "Google Ads", "GA4", "Unbounce", "WordPress", "Make", "Zapier", "Blender"];
 
@@ -36,6 +36,7 @@
     var u = S.ui[lang], home = document.body.dataset.page === "home" ? "" : "index.html";
     return '<header class="wrap top"><a class="mark" href="index.html">Paulo Ralha</a><nav aria-label="Main">' +
       '<a href="' + home + '#work">' + u.nav.work + '</a><a href="' + home + '#about">' + u.nav.about + '</a><a href="' + home + '#contact">' + u.nav.contact + "</a>" +
+      '<a class="nav-cv" href="../assets/cv/paulo-ralha-cv-' + lang + '.pdf" target="_blank" rel="noopener">' + (lang === "pt" ? "Descarregar CV" : "Download CV") + "</a>" +
       '<button type="button" data-lang="pt" aria-pressed="' + (lang === "pt") + '">PT</button>' +
       '<button type="button" data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button></nav></header>';
   }
@@ -57,7 +58,7 @@
     }).join("");
     return '<main class="wrap">' +
       '<section class="hero"><div class="word-row"><h1 class="word" aria-label="Portfolio">P<span class="pill" aria-hidden="true"></span>rtfolio</h1><img class="smile" src="' + IMG.smile + '" alt=""></div>' +
-      '<div class="hero-sub"><div><p class="who">Paulo Ralha, ' + u.role + '</p><p class="intro">' + esc(u.intro) + "</p></div>" +
+      '<div class="hero-sub"><div><p class="who">Paulo Ralha, ' + u.role + '</p><p class="intro">' + esc(u.intro) + '</p><div class="hero-cta"><a class="btn-cv" href="../assets/cv/paulo-ralha-cv-' + lang + '.pdf" target="_blank" rel="noopener">' + (lang === "pt" ? "Descarregar CV (PDF)" : "Download CV (PDF)") + '</a><a class="btn-ln" href="' + S.linkedin + '" target="_blank" rel="noopener">LinkedIn</a></div></div>' +
       '<img class="badge" src="' + IMG.badge + '" alt=""></div></section>' +
 
       '<section id="about" class="behind card"><div><h2 class="display">' + t.behind + "</h2>" +
@@ -71,7 +72,7 @@
 
       '<section id="contact" class="contact card"><h2 class="display">' + u.contact + "</h2><p>" + esc(u.contactText) + "</p>" +
       '<a class="mail" href="mailto:' + S.email + '">' + S.email + "</a>" +
-      '<div class="links"><a href="' + S.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' + cvLink(lang, u.cv + " (PDF)") + cvLink(lang === "pt" ? "en" : "pt", lang === "pt" ? "CV in English" : "CV em português") + "</div></section></main>";
+      '<div class="links"><a href="' + S.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' + cvLink("pt", "CV PT") + cvLink("en", "CV EN") + "</div></section></main>";
   }
 
   function casePage() {
