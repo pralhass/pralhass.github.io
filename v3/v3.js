@@ -130,15 +130,59 @@
     var phases = P.map(function (ph, i) {
       return '<article class="phase card' + (vis[i] ? "" : " slim") + '"><div class="ph-head"><span class="ph-n">' + (i + 1) + '</span><h3>' + esc(ph.t) + '</h3><span class="tag">' + esc(ph.tools) + '</span></div><div class="ph-body"><p>' + esc(ph.d) + "</p>" + vis[i] + "</div></article>";
     }).join("");
-    return '<section class="ai-feature card"><div class="phone"><video controls playsinline preload="metadata" poster="' + A.video + '.jpg" src="' + A.video + '.mp4"></video></div>' +
+    var grandma = '<section class="ai-feature card"><div class="phone"><video controls playsinline preload="metadata" poster="' + A.video + '.jpg" src="' + A.video + '.mp4"></video></div>' +
       '<div class="ai-intro"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p><div class="ai-stats">' +
       x.stats.map(function (s) { return "<div><b>" + s[0] + "</b><span>" + esc(s[1]) + "</span></div>"; }).join("") + "</div></div></section>" +
       '<section class="ai-process"><div class="sec-head"><h2 class="display">' + x.processTitle + "</h2></div>" + phases + "</section>" +
-      '<section class="ai-tv card"><div class="tv-frame"><video controls playsinline preload="metadata" poster="' + B + A.tv + '.jpg" src="' + B + A.tv + '.mp4"></video></div><div class="tv-txt"><span class="tag">' + x.tvKicker + '</span><h2 class="display">' + esc(x.tvTitle) + "</h2><p>" + esc(x.tvText) + '</p><div class="chips">' + x.tvFacts.map(function (f) { return '<span class="chip">' + esc(f) + "</span>"; }).join("") + "</div></div></section>" +
       '<section class="ai-learn"><h2 class="display">' + x.learnTitle + '</h2><div class="learn-grid">' + x.learn.map(function (l) { return '<div class="card"><h3>' + esc(l[0]) + "</h3><p>" + esc(l[1]) + "</p></div>"; }).join("") + "</div></section>";
+    var tabs = A.tabs[lang], ids = ["avo", "tv", "equipa"], cur = ids.indexOf(location.hash.slice(1)); if (cur < 0) cur = 0;
+    var panels = [grandma, chPanel(), teamPanel()];
+    return '<div class="ai-tabs" role="tablist">' + tabs.map(function (t, i) { return '<button type="button" role="tab" id="tab-' + ids[i] + '" aria-controls="pan-' + ids[i] + '" aria-selected="' + (i === cur) + '" data-tab="' + ids[i] + '">' + esc(t) + "</button>"; }).join("") + "</div>" +
+      panels.map(function (p, i) { return '<div class="ai-panel" role="tabpanel" id="pan-' + ids[i] + '" aria-labelledby="tab-' + ids[i] + '"' + (i === cur ? "" : " hidden") + ">" + p + "</div>"; }).join("");
+  }
+
+  function chPanel() {
+    var C = window.AI.ch, x = C[lang], B = C.base, P = x.phases;
+    function fig(src, cap) { return '<figure><img src="' + B + src + '.jpg" alt="' + esc(cap) + '" loading="lazy"><figcaption>' + esc(cap) + "</figcaption></figure>"; }
+    var vis = [
+      '<div class="g4 w">' + ["man", "man-face", "woman", "woman-face"].map(function (f, i) { return fig(f, P[0].caps[i]); }).join("") + "</div>",
+      '<div class="g3 w">' + ["hall", "living", "topview"].map(function (f, i) { return fig(f, P[1].caps[i]); }).join("") + "</div>",
+      '<div class="pair w">' + fig("product-photo", P[2].prodCaps[0]) + '<span class="arrow" aria-hidden="true">→</span>' + fig("k-addlift", P[2].prodCaps[1]) + '</div><div class="g4 w">' +
+        ["k-empty", "k-walk", "k-feet", "k-hand", "k-help", "k-daughter", "k-top", "k-smile"].map(function (f, i) { return fig(f, P[2].caps[i]); }).join("") + "</div>",
+      '<figure class="clip"><video controls muted playsinline preload="metadata" poster="' + B + 'f2v.jpg" src="' + B + 'f2v.mp4"></video><figcaption>' + esc(P[3].clipCap) + "</figcaption></figure>",
+      '<figure class="audio"><audio controls preload="none" src="' + B + 'jingle.m4a"></audio><figcaption>' + esc(P[4].audioCap) + "</figcaption></figure>",
+      '<figure class="clip"><img src="' + B + 'after-effects.jpg" alt="' + esc(P[5].shotCap) + '" loading="lazy"><figcaption>' + esc(P[5].shotCap) + "</figcaption></figure>"
+    ];
+    var phases = P.map(function (ph, i) {
+      return '<article class="phase card"><div class="ph-head"><span class="ph-n">' + (i + 1) + '</span><h3>' + esc(ph.t) + '</h3><span class="tag">' + esc(ph.tools) + '</span></div><div class="ph-body"><p>' + esc(ph.d) + "</p>" + vis[i] + "</div></article>";
+    }).join("");
+    return '<section class="ch-feature card"><div class="tv-frame"><video controls playsinline preload="metadata" poster="' + C.film + '.jpg" src="' + C.film + '.mp4"></video></div>' +
+      '<div class="ai-intro"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p><div class="ai-stats">' +
+      x.stats.map(function (s) { return "<div><b>" + s[0] + "</b><span>" + esc(s[1]) + "</span></div>"; }).join("") + "</div></div></section>" +
+      '<section class="ai-process"><div class="sec-head"><h2 class="display">' + x.processTitle + "</h2></div>" + phases + "</section>";
+  }
+
+  function teamPanel() {
+    var T = window.AI.team, x = T[lang];
+    return '<section class="team"><div class="sec-head"><h2 class="display">' + x.title + "</h2><p>" + esc(x.text) + '</p></div><div class="team-grid">' +
+      T.items.map(function (it) { var t = it[lang]; return '<figure class="card"><div class="team-media" style="aspect-ratio:' + it.r + '"><video controls playsinline preload="metadata" poster="' + T.base + it.f + '.jpg" src="' + T.base + it.f + '.mp4"></video></div><figcaption><strong>' + esc(t[0]) + "</strong><span>" + esc(t[1]) + "</span></figcaption></figure>"; }).join("") + "</div></section>";
   }
 
   function bindAI() {
+    var tabs = document.querySelectorAll(".ai-tabs [role=tab]");
+    function sel(btn, focus) {
+      tabs.forEach(function (t) { var on = t === btn; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute("aria-controls")).hidden = !on; });
+      document.querySelectorAll(".ai-panel[hidden] video, .ai-panel[hidden] audio").forEach(function (m) { m.pause(); });
+      history.replaceState(null, "", "#" + btn.dataset.tab); if (focus) btn.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.tabIndex = t.getAttribute("aria-selected") === "true" ? 0 : -1;
+      t.addEventListener("click", function () { sel(t); });
+      t.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (d) { e.preventDefault(); sel(tabs[(i + d + tabs.length) % tabs.length], true); }
+      });
+    });
     document.querySelectorAll(".cmp input").forEach(function (r) {
       r.addEventListener("input", function () { r.closest(".cmp").style.setProperty("--p", r.value + "%"); });
     });

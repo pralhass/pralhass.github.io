@@ -1,13 +1,79 @@
 // Featured process for the "ai-production" case (v3): the grandma who rises through the floor.
 window.AI = {
+  tabs: { en: ["The grandma who rises through the floor", "\u201cWhat if I wasn't here\u201d, TV spot", "Made by the team"], pt: ["A avó que aparece pelo chão", "\u201cWhat if I wasn't here\u201d, spot de TV", "Feito pela equipa"] },
+  ch: {
+    base: "../media/ai/ch/",
+    film: "../media/ai/tv-ch",
+    en: {
+      kicker: "TV · Switzerland · 2026",
+      title: "\u201cWhat if I wasn't here\u201d",
+      intro: "The brief was one line: make a TV spot entirely with AI. The result is a 15-second stairlift commercial for the Swiss market, launched in September 2026. A daughter steadies her father on the stairs; the stairlift gives him his independence back. No shoot, no actors, no location: every frame was generated, then edited and finished by hand.",
+      stats: [["15 s", "16:9 TV spot"], ["100%", "AI-generated footage"], ["2", "characters kept consistent"], ["1", "house, built shot by shot"]],
+      processTitle: "From one line to a TV spot",
+      phases: [
+        { t: "Cast", tools: "Image generation",
+          d: "Two characters, a father and his daughter, each with a full-body reference and a close-up. These sheets went into every later image, so the same faces, hair and clothes appear in every shot.",
+          caps: ["Father, full body", "Father, close-up", "Daughter, full body", "Daughter, close-up"] },
+        { t: "The house", tools: "Image generation",
+          d: "A warm, slightly dated Swiss home: wood panelling, terracotta tiles, a straight staircase with a dark runner. I generated the hall, the living room and a top view of the stairs, so every angle belongs to the same house.",
+          caps: ["Hall and staircase", "Living room", "Top view of the stairs"] },
+        { t: "Keyframes", tools: "Image editing with references",
+          d: "Each shot started as a 4K still, built up in small edits: remove a door, place the father, change the framing, add the hands on the rail. The stairlift was placed from a real Stannah product photo, so the product on screen is accurate and not invented by the model.",
+          prodCaps: ["Real product photo", "Placed in the scene"],
+          caps: ["He heads for the stairs", "At the foot of the stairs", "Feet on the step", "Hand on the rail", "His daughter steps in", "Together on the stairs", "On the stairlift", "The smile that closes the spot"] },
+        { t: "Frame to video", tools: "Video generation",
+          d: "The approved keyframes were animated into short shots, one at a time, keeping the camera calm and the movement slow, the way a TV spot should feel. Below, one of the generated shots before the edit.",
+          clipCap: "Generated shot: the father rides the stairlift, 8 s" },
+        { t: "Sound", tools: "Voice-over, jingle, foley",
+          d: "A German voice-over and claim, recorded in several takes, the Stannah jingle and small foley like the creak of the leather seat. Sound is what makes generated images feel like a real place.",
+          audioCap: "The jingle used in the spot" },
+        { t: "Edit and finish", tools: "After Effects",
+          d: "Everything came together in After Effects at 24 fps: the cut, the voice, the music, the logo and URL, the \u201cVer\u00e4ndert dein Leben\u201d end card on the red gradient and a small \u201cgenerated with AI\u201d label on screen. The website and landing page banners were then aligned with the spot, so the journey from TV to web feels like one campaign.",
+          shotCap: "The project in After Effects" }
+      ]
+    },
+    pt: {
+      kicker: "TV · Suíça · 2026",
+      title: "\u201cWhat if I wasn't here\u201d",
+      intro: "O briefing era uma linha: fazer um spot de TV inteiramente com IA. O resultado é um anúncio de 15 segundos de cadeiras elevatórias para o mercado suíço, lançado em setembro de 2026. Uma filha ampara o pai nas escadas e a cadeira elevatória devolve-lhe a autonomia. Sem gravação, sem atores, sem décor: cada frame foi gerado e depois editado e finalizado à mão.",
+      stats: [["15 s", "spot de TV 16:9"], ["100%", "imagens geradas com IA"], ["2", "personagens consistentes"], ["1", "casa, construída plano a plano"]],
+      processTitle: "De uma linha a um spot de TV",
+      phases: [
+        { t: "Casting", tools: "Geração de imagem",
+          d: "Duas personagens, um pai e a filha, cada uma com uma referência de corpo inteiro e um grande plano. Estas folhas entraram em todas as imagens seguintes, para que as mesmas caras, cabelos e roupas aparecessem em todos os planos.",
+          caps: ["Pai, corpo inteiro", "Pai, grande plano", "Filha, corpo inteiro", "Filha, grande plano"] },
+        { t: "A casa", tools: "Geração de imagem",
+          d: "Uma casa suíça acolhedora e um pouco antiga: lambril de madeira, mosaico de terracota, uma escada reta com passadeira escura. Gerei o hall, a sala e uma vista de cima da escada, para que todos os ângulos pertencessem à mesma casa.",
+          caps: ["Hall e escada", "Sala", "Vista de cima da escada"] },
+        { t: "Keyframes", tools: "Edição de imagem com referências",
+          d: "Cada plano começou como uma imagem 4K, construída em pequenas edições: tirar uma porta, colocar o pai, mudar o enquadramento, juntar as mãos no corrimão. A cadeira elevatória foi colocada a partir de uma foto real de produto da Stannah, para que o produto no ecrã fosse fiel e não inventado pelo modelo.",
+          prodCaps: ["Foto real do produto", "Colocada na cena"],
+          caps: ["Ele dirige-se às escadas", "No fundo das escadas", "Os pés no degrau", "A mão no corrimão", "A filha aproxima-se", "Juntos nas escadas", "Na cadeira elevatória", "O sorriso que fecha o spot"] },
+        { t: "Frame to video", tools: "Geração de vídeo",
+          d: "Os keyframes aprovados foram animados em planos curtos, um de cada vez, com a câmara calma e o movimento lento, como deve ser um spot de TV. Abaixo, um dos planos gerados antes da edição.",
+          clipCap: "Plano gerado: o pai sobe na cadeira elevatória, 8 s" },
+        { t: "Som", tools: "Voz-off, jingle, foley",
+          d: "Voz-off e claim em alemão, gravados em vários takes, o jingle da Stannah e pequenos sons como o ranger do assento em pele. É o som que faz imagens geradas parecerem um sítio real.",
+          audioCap: "O jingle usado no spot" },
+        { t: "Edição e finalização", tools: "After Effects",
+          d: "Tudo se juntou no After Effects a 24 fps: a montagem, a voz, a música, o logo e o URL, o end card \u201cVer\u00e4ndert dein Leben\u201d sobre o gradiente vermelho e uma pequena etiqueta \u201cgenerated with AI\u201d no ecrã. Depois, os banners do site e das landing pages foram alinhados com o spot, para que o percurso da TV à web parecesse uma só campanha.",
+          shotCap: "O projeto no After Effects" }
+      ]
+    }
+  },
+  team: {
+    base: "../media/ai/team/",
+    items: [
+      { f: "t1", r: "4/5", en: ["Bedtime stories are back", "A grandson and his grandma head upstairs for bedtime stories: \u201cEvery night. Upstairs.\u201d"], pt: ["Bedtime stories are back", "Um neto e a avó sobem para a história da noite: \u201cEvery night. Upstairs.\u201d"] },
+      { f: "t2", r: "9/16", en: ["Second hand, first class (1)", "Reconditioned stairlifts for Spain: the stairlift carried across the street to a grandma waving from her balcony."], pt: ["De segunda mano, calidad de primera (1)", "Cadeiras recondicionadas para Espanha: a cadeira atravessa a rua até uma avó que acena da varanda."] },
+      { f: "t3", r: "9/16", en: ["Second hand, first class (2)", "The same message, a second story: the stairlift arrives at the door like a guest with a suitcase."], pt: ["De segunda mano, calidad de primera (2)", "A mesma mensagem, outra história: a cadeira chega à porta como uma visita de mala na mão."] }
+    ],
+    en: { title: "Made by the team", text: "These ads were made by my team, not by me. They use the same way of working I developed and taught in hands-on workshops: character and set references, the real product as a reference in every generation, previs or keyframes before video, and short, specific iterations. This is the part I'm proudest of: the method no longer depends on one person." },
+    pt: { title: "Feito pela equipa", text: "Estes anúncios foram feitos pela minha equipa, não por mim. Usam a mesma forma de trabalhar que desenvolvi e ensinei em workshops práticos: referências de personagens e cenários, o produto real como referência em todas as gerações, previs ou keyframes antes do vídeo e iterações curtas e concretas. É a parte de que mais me orgulho: o método já não depende de uma pessoa." }
+  },
   base: "../media/ai/",
   video: "../media/ads/uplifts-story",
-  tv: "tv-ch",
   en: {
-    tvKicker: "Also made with AI",
-    tvTitle: "\u201cWhat if I wasn't here\u201d, a TV spot for Switzerland",
-    tvText: "The same way of working, taken to television: a 15-second stairlift spot for the Swiss market, generated with AI, with a German voice-over and the \u201cVer\u00e4ndert dein Leben\u201d tagline. A daughter steadies her father on the stairs, then the stairlift gives him back his independence. The website and landing page banners were later aligned with the spot, so the journey from TV to web feels like one campaign.",
-    tvFacts: ["15 s · 16:9", "Switzerland (DE)", "AI-generated footage"],
     kicker: "Featured project",
     title: "The grandma who rises through the floor",
     intro: "A UGC-style home lift ad for Meta, made from scratch with AI. One conversation with Claude took it from the idea to the final video and to an After Effects project the team can edit. Claude doesn't make images or video: it thinks, writes the prompts, drives Blender and edits. Images came from Nano Banana Pro and video from Seedance 2.5, both in Higgsfield.",
@@ -42,10 +108,6 @@ window.AI = {
     learn: [["Ask before you prompt", "When something is off, asking \"what would you change?\" gives better prompts than rewriting blind."], ["Previs controls the motion", "A simple Blender render as @source gives full control over camera and timing."], ["State the product rules", "Hold-to-run, the gate, the speed, no works: written once, applied to every prompt."], ["Reference only what matters", "\"Use it only for the lift\" or \"ignore the direction of the video\" stops unwanted copying."], ["Iterate in short sentences", "\"Slower\", \"more natural\", \"swap sides\": small changes without starting over."], ["Brand last, not first", "Make the video work first, then apply colours, fonts and the ads guide."]]
   },
   pt: {
-    tvKicker: "Também feito com IA",
-    tvTitle: "\u201cWhat if I wasn't here\u201d, um spot de TV para a Suíça",
-    tvText: "A mesma forma de trabalhar, levada à televisão: um spot de 15 segundos de cadeiras elevatórias para o mercado suíço, gerado com IA, com voz-off em alemão e a assinatura \u201cVer\u00e4ndert dein Leben\u201d. Uma filha ampara o pai nas escadas e depois a cadeira elevatória devolve-lhe a autonomia. Os banners do site e das landing pages foram depois alinhados com o spot, para que o percurso da TV à web pareça uma só campanha.",
-    tvFacts: ["15 s · 16:9", "Suíça (DE)", "Imagens geradas com IA"],
     kicker: "Projeto em destaque",
     title: "A avó que aparece pelo chão",
     intro: "Um anúncio de elevador doméstico em estilo UGC para Meta, feito do zero com IA. Uma única conversa com o Claude levou-o da ideia ao vídeo final e a um projeto de After Effects que a equipa pode editar. O Claude não gera imagens nem vídeo: pensa, escreve os prompts, controla o Blender e edita. As imagens vieram do Nano Banana Pro e o vídeo do Seedance 2.5, ambos no Higgsfield.",
