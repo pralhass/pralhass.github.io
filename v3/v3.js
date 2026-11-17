@@ -79,7 +79,7 @@
       '<header class="case-head"><div><h1 class="display">' + esc(x.title) + '</h1><span class="tag">' + esc(x.tag) + '</span><p class="summary">' + esc(x.summary) + "</p></div></header>" +
       '<div class="case-cover card"><img src="' + IMG[c.slug] + '" alt=""></div>' +
       '<section class="story"><div class="card"><h2>' + u.challenge + "</h2><p>" + esc(x.challenge) + '</p></div><div class="card"><h2>' + u.approach + "</h2><p>" + esc(x.approach) + '</p></div><div class="card"><h2>' + u.result + "</h2><p>" + esc(x.result) + "</p></div></section>" +
-      (c.slug === "creative-testing" && window.ADS ? adsSections() : c.slug === "ai-production" && window.AI ? aiSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
+      (c.slug === "creative-testing" && window.ADS ? adsSections() : c.slug === "ai-production" && window.AI ? aiSections() : c.slug === "tv-spots" && window.TV ? tvSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
       '<a class="next card" href="case.html?c=' + next.slug + '"><span class="label">' + u.next + '</span><span class="display">' + esc(next[lang].title) + "</span></a></main>";
   }
 
@@ -109,6 +109,21 @@
     }).join("");
     return '<section class="ads-wall"><div class="sec-head"><h2 class="display">' + ui.wall + "</h2><p>" + ui.wallText + '</p></div><div class="ads-grid">' + wall + "</div></section>" + bulks +
       '<div class="lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + ui.close + '</button><div class="lb-tabs"></div><div class="lb-stage"></div><p class="lb-cap"></p></div></div>';
+  }
+
+  // TV spots case.
+  function tvSections() {
+    var T = window.TV, x = T[lang], B = T.base;
+    function vid(k) { return '<div class="tv-frame"><video controls playsinline preload="none" poster="' + B + k + '.jpg" src="' + B + k + '.mp4"></video></div>'; }
+    var spots = x.spots.map(function (s) {
+      var sb = ""; for (var i = 1; i <= 12; i++) sb += '<img src="' + B + "sb/" + s.k + "-" + (i < 10 ? "0" : "") + i + '.jpg" alt="" loading="lazy">';
+      return '<article class="spot card"><div class="spot-top">' + vid(s.k) + '<div class="spot-txt"><span class="tag">' + esc(s.meta) + '</span><h3 class="display">' + esc(s.t) + "</h3><p>" + esc(s.d) + '</p></div></div><div class="sb"><span class="sb-label">' + x.sbLabel + '</span><div class="sb-grid">' + sb + "</div></div></article>";
+    }).join("");
+    var bts = ""; for (var b = 1; b <= 14; b++) bts += '<img src="' + B + "bts/bts-" + (b < 10 ? "0" : "") + b + '.jpg" alt="" loading="lazy">';
+    var more = x.more.map(function (m) { return "<figure>" + vid(m.k) + "<figcaption><strong>" + esc(m.t) + '</strong><span class="m">' + esc(m.m) + "</span><span>" + esc(m.d) + "</span></figcaption></figure>"; }).join("");
+    return '<section class="tv-intro card"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + "</p></section>" + spots +
+      '<section class="bts card"><div class="bulk-head"><h2 class="display">' + x.btsTitle + "</h2><p>" + esc(x.btsText) + '</p></div><div class="bts-grid">' + bts + "</div></section>" +
+      '<section class="more-tv"><div class="sec-head"><h2 class="display">' + x.moreTitle + "</h2><p>" + esc(x.moreText) + '</p></div><div class="more-grid">' + more + "</div></section>";
   }
 
   // Featured AI process, only on the ai-production case.
