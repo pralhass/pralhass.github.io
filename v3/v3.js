@@ -92,7 +92,7 @@
       var media = a.video
         ? '<video muted loop playsinline preload="none" poster="' + src + '.jpg" data-src="' + src + '.mp4"></video>'
         : '<img src="' + src + '.jpg" alt="" loading="lazy">';
-      return '<button type="button" class="ad card" data-ad="' + i + '"><span class="ad-media' + (f0 === "story" ? " is-story" : "") + '">' + media + (a.res ? '<span class="ad-res">' + a.res.map(function (r) { return "<b>" + r + "</b>"; }).join("") + "</span>" : "") + "</span>" +
+      return '<button type="button" class="ad card" data-ad="' + i + '"><span class="ad-media' + (f0 === "story" ? " is-story" : a.sq ? " is-sq" : "") + '">' + media + (a.res ? '<span class="ad-res">' + a.res.map(function (r) { return "<b>" + r + "</b>"; }).join("") + "</span>" : "") + "</span>" +
         '<span class="ad-txt"><span class="tag">' + esc(a.market[lang]) + "</span><strong>" + esc(x.t) + "</strong><span>" + esc(x.d) + "</span></span></button>";
     }).join("");
     var bulks = A.bulks.map(function (b, bi) {
