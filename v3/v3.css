@@ -451,3 +451,26 @@ img { display: block; max-width: 100%; }
   .nav-lang { display: flex; gap: 6px; padding: 8px 8px 4px; border-top: 1px solid var(--paper); margin-top: 4px; }
 }
 @media (prefers-reduced-motion: reduce) { .nav-burger span { transition: none; } }
+
+/* Motion case */
+.mo-feature { display: grid; grid-template-columns: minmax(260px, .8fr) 1.5fr; gap: clamp(20px, 3vw, 40px); padding: clamp(22px, 3vw, 40px); align-items: center; margin-bottom: clamp(32px, 5vw, 56px); }
+.mo-intro .tag { display: inline-block; padding: 6px 13px; border-radius: 999px; background: #E6E6FD; font-weight: 700; font-size: 14px; }
+.mo-intro h2 { font-size: clamp(30px, 3.6vw, 52px); margin: 14px 0; }
+.mo-intro p { margin: 0; }
+.mo-player { margin: 0; }
+.mo-player video { width: 100%; display: block; border-radius: 16px; background: #000; }
+.mo-player figcaption { margin-top: 10px; font-size: 15px; }
+.mo-player figcaption span { opacity: .65; margin-left: 6px; }
+.mo-group { margin-bottom: clamp(28px, 4vw, 44px); }
+.mo-group h3 { font-size: 22px; margin: 0 0 14px; }
+.mo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.mo-tile { display: flex; flex-direction: column; padding: 0; border: 2px solid transparent; background: var(--card); border-radius: 20px; overflow: hidden; text-align: left; font: inherit; color: inherit; cursor: pointer; box-shadow: 0 10px 30px -20px rgba(31,35,40,.45); }
+.mo-tile[aria-pressed="true"] { border-color: var(--ink); }
+.mo-tile:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.mo-img { position: relative; display: block; aspect-ratio: 16 / 9; background: var(--paper); }
+.mo-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mo-play { position: absolute; left: 12px; bottom: 12px; width: 38px; height: 38px; border-radius: 50%; background: var(--yellow); }
+.mo-play::after { content: ""; position: absolute; left: 15px; top: 11px; border-style: solid; border-width: 8px 0 8px 12px; border-color: transparent transparent transparent var(--ink); }
+.mo-txt { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px 14px; }
+.mo-txt span { font-size: 14px; opacity: .7; }
+@media (max-width: 900px) { .mo-feature { grid-template-columns: 1fr; } }

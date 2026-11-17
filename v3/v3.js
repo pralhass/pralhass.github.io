@@ -14,7 +14,7 @@
     "ai-production": C + "ai-production.jpg?v=2",
     "tv-spots": C + "tv-spots.jpg?v=2",
     "landing-pages": C + "landing-pages.jpg?v=2",
-    motion: C + "motion.jpg?v=2",
+    motion: C + "motion.jpg?v=3",
     "earlier-work": C + "earlier-work.jpg"
   };
   var T = {
@@ -57,7 +57,7 @@
     }).join("");
     var projects = S.cases.map(function (c) {
       var x = c[lang];
-      return '<a class="project card" href="case.html?c=' + c.slug + '"><video class="cover" muted loop playsinline preload="none" poster="' + IMG[c.slug] + '" data-src="' + C + "anim-" + c.slug + '.mp4" aria-hidden="true"></video>' +
+      return '<a class="project card" href="case.html?c=' + c.slug + '"><video class="cover" muted loop playsinline preload="none" poster="' + IMG[c.slug] + '" data-src="' + C + "anim-" + c.slug + (c.slug === "motion" ? "-2" : "") + '.mp4" aria-hidden="true"></video>' +
         '<div class="txt"><span class="tag">' + esc(x.tag) + "</span><h3>" + esc(x.title) + '</h3><p class="sum">' + esc(x.summary) + '</p><span class="go">' + t.read + "</span></div></a>";
     }).join("");
     return '<main class="wrap">' +
@@ -91,7 +91,7 @@
       '<header class="case-head"><div><h1 class="display">' + esc(x.title) + '</h1><span class="tag">' + esc(x.tag) + '</span><p class="summary">' + esc(x.summary) + "</p></div></header>" +
       '<div class="case-cover card"><img src="' + IMG[c.slug] + '" alt=""></div>' +
       '<section class="story"><div class="card"><h2>' + u.challenge + "</h2><p>" + esc(x.challenge) + '</p></div><div class="card"><h2>' + u.approach + "</h2><p>" + esc(x.approach) + '</p></div><div class="card"><h2>' + u.result + "</h2><p>" + esc(x.result) + "</p></div></section>" +
-      (c.slug === "creative-testing" && window.ADS ? adsSections() : c.slug === "ai-production" && window.AI ? aiSections() : c.slug === "tv-spots" && window.TV ? tvSections() : c.slug === "landing-pages" && window.LP ? lpSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
+      (c.slug === "creative-testing" && window.ADS ? adsSections() : c.slug === "ai-production" && window.AI ? aiSections() : c.slug === "tv-spots" && window.TV ? tvSections() : c.slug === "landing-pages" && window.LP ? lpSections() : c.slug === "motion" && window.MOTION ? motionSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
       '<a class="next card" href="case.html?c=' + next.slug + '"><span class="label">' + u.next + '</span><span class="display">' + esc(next[lang].title) + "</span></a></main>";
   }
 
@@ -167,6 +167,35 @@
       x.stats.map(function (s) { return "<div><b>" + s[0] + "</b><span>" + esc(s[1]) + "</span></div>"; }).join("") + '</div><div class="lp-cols"><div><h3>' + esc(x.topTitle) + '</h3><ul class="lp-top">' +
       x.top.map(function (t) { return '<li><span class="mk-code">' + t[0] + "</span><span>" + esc(t[1]) + "</span><b>" + t[2] + "</b></li>"; }).join("") + "</ul></div><div><h3>" + esc(x.rollTitle) + "</h3>" +
       x.roll.map(function (r) { return '<div class="lp-roll"><strong>' + esc(r[0]) + '</strong><div class="chips">' + r[1].map(function (m) { return '<span class="chip">' + m[0] + " <b>" + m[1] + "</b></span>"; }).join("") + "</div></div>"; }).join("") + "</div></div></section>" + (window.LP.camp ? campSections() : "");
+  }
+
+  // Motion case: featured player + grouped grid; a tile loads its film into the player.
+  function motionSections() {
+    var M = window.MOTION, x = M[lang], B = M.base, all = {};
+    M.groups.forEach(function (g) { g.items.forEach(function (it) { all[it[0]] = it; }); });
+    var f = all[M.featured];
+    function title(it) { return lang === "pt" ? it[2] : it[3]; }
+    var groups = M.groups.map(function (g) {
+      return '<div class="mo-group"><h3>' + esc(x.groups[g.id]) + '</h3><div class="mo-grid">' + g.items.map(function (it) {
+        return '<button type="button" class="mo-tile" data-k="' + it[0] + '" data-t="' + esc(title(it)) + '" data-m="' + esc(it[1]) + '" aria-pressed="' + (it[0] === M.featured) + '"><span class="mo-img"><img src="' + B + it[0] + '.jpg" alt="" loading="lazy"><span class="mo-play" aria-hidden="true"></span></span><span class="mo-txt"><strong>' + esc(title(it)) + '</strong><span>' + esc(it[1]) + "</span></span></button>";
+      }).join("") + "</div></div>";
+    }).join("");
+    return '<section class="mo-feature card"><div class="mo-intro"><span class="tag">' + esc(x.kicker) + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p></div><figure class="mo-player"><div class="tv-frame"><video controls playsinline preload="metadata" poster="' + B + f[0] + '.jpg" src="' + B + f[0] + '.mp4"></video></div><figcaption><strong>' + esc(title(f)) + "</strong> <span>" + esc(f[1]) + "</span></figcaption></figure></section>" +
+      '<section class="mo-list">' + groups + "</section>";
+  }
+
+  function bindMotion() {
+    var M = window.MOTION, pl = document.querySelector(".mo-player"); if (!M || !pl) return;
+    var v = pl.querySelector("video"), cap = pl.querySelector("figcaption");
+    document.querySelectorAll(".mo-tile").forEach(function (t) {
+      t.addEventListener("click", function () {
+        document.querySelectorAll(".mo-tile").forEach(function (o) { o.setAttribute("aria-pressed", o === t); });
+        v.pause(); v.poster = M.base + t.dataset.k + ".jpg"; v.src = M.base + t.dataset.k + ".mp4"; v.load();
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+        cap.innerHTML = "<strong>" + esc(t.dataset.t) + "</strong> <span>" + esc(t.dataset.m) + "</span>";
+        pl.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+      });
+    });
   }
 
   // Campaign landing pages: market switcher per rollout + gallery with lightbox.
@@ -363,7 +392,7 @@
     var page = document.body.dataset.page;
     document.getElementById("app").innerHTML = top() + (page === "case" ? casePage() : home());
     if (page === "home") document.title = "Paulo Ralha | Portfolio";
-    bindAds(); bindAI(); bindTV(); bindLP(); bindNav(); bindCovers();
+    bindAds(); bindAI(); bindTV(); bindLP(); bindNav(); bindCovers(); bindMotion();
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.addEventListener("click", function () { lang = b.dataset.lang; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
     });
