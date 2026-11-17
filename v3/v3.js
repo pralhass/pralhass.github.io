@@ -10,11 +10,11 @@
     tv: C + "tv.gif",
     hand: C + "hand.gif",
     smile: C + "smile.gif",
-    "creative-testing": C + "creative-testing.jpg",
-    "ai-production": C + "ai-production.jpg",
-    "tv-spots": C + "tv-spots.jpg",
-    "landing-pages": C + "landing-pages.jpg",
-    motion: C + "motion.jpg",
+    "creative-testing": C + "creative-testing.jpg?v=2",
+    "ai-production": C + "ai-production.jpg?v=2",
+    "tv-spots": C + "tv-spots.jpg?v=2",
+    "landing-pages": C + "landing-pages.jpg?v=2",
+    motion: C + "motion.jpg?v=2",
     "earlier-work": C + "earlier-work.jpg"
   };
   var T = {
