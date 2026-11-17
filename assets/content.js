@@ -105,7 +105,7 @@ window.SITE = {
       ratio: "9/16",
       en: {
         title: "Ad production with generative AI",
-        tag: "Higgsfield · Seedance · Claude",
+        tag: "Nano Banana · Seedance · Veo · Claude",
         summary: "Bringing AI image and video into a working ad team, from first tests to daily production.",
         challenge: "To reach the volume paid media asked for, the team had to make more ads without more people or more hours.",
         approach: "I brought generative image and video into daily production, built a shared library of reference images, wrote AI workflows for ad creation, QA and video prompts, and trained the team in hands-on workshops.",
@@ -113,7 +113,7 @@ window.SITE = {
       },
       pt: {
         title: "Produção de anúncios com IA generativa",
-        tag: "Higgsfield · Seedance · Claude",
+        tag: "Nano Banana · Seedance · Veo · Claude",
         summary: "Levar a imagem e o vídeo com IA para uma equipa de anúncios a sério, dos primeiros testes à produção diária.",
         challenge: "Para chegar ao volume pedido pelo paid media, a equipa tinha de fazer mais anúncios sem mais pessoas nem mais horas.",
         approach: "Integrei a imagem e o vídeo generativos na produção diária, criei uma biblioteca partilhada de referências, escrevi fluxos de IA para criação de anúncios, QA e prompts de vídeo, e dei formação prática à equipa.",
