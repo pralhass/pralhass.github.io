@@ -154,7 +154,48 @@
     return '<section class="lp-nums card"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p><div class="ai-stats">' +
       x.stats.map(function (s) { return "<div><b>" + s[0] + "</b><span>" + esc(s[1]) + "</span></div>"; }).join("") + '</div><div class="lp-cols"><div><h3>' + esc(x.topTitle) + '</h3><ul class="lp-top">' +
       x.top.map(function (t) { return '<li><span class="mk-code">' + t[0] + "</span><span>" + esc(t[1]) + "</span><b>" + t[2] + "</b></li>"; }).join("") + "</ul></div><div><h3>" + esc(x.rollTitle) + "</h3>" +
-      x.roll.map(function (r) { return '<div class="lp-roll"><strong>' + esc(r[0]) + '</strong><div class="chips">' + r[1].map(function (m) { return '<span class="chip">' + m[0] + " <b>" + m[1] + "</b></span>"; }).join("") + "</div></div>"; }).join("") + "</div></div></section>";
+      x.roll.map(function (r) { return '<div class="lp-roll"><strong>' + esc(r[0]) + '</strong><div class="chips">' + r[1].map(function (m) { return '<span class="chip">' + m[0] + " <b>" + m[1] + "</b></span>"; }).join("") + "</div></div>"; }).join("") + "</div></div></section>" + (window.LP.camp ? campSections() : "");
+  }
+
+  // Campaign landing pages: market switcher per rollout + gallery with lightbox.
+  function campSections() {
+    var C = window.LP.camp, u = C[lang], B = C.base;
+    var rolls = C.rollouts.map(function (r) {
+      var t = r[lang], p0 = r.pages[0][0];
+      return '<article class="lp-rollout card"><div class="lp-r-txt"><h3 class="display">' + esc(t.t) + "</h3><p>" + esc(t.d) + '</p><span class="lp-pick">' + u.pick + '</span><div class="lp-mk" role="group" aria-label="' + esc(u.pick) + '">' +
+        r.pages.map(function (pg, i) { return '<button type="button" data-k="' + pg[0] + '" aria-pressed="' + (i === 0) + '">' + esc(pg[1]) + "</button>"; }).join("") +
+        '</div></div><div class="lp-browser"><div class="lp-bar"><i></i><i></i><i></i><span>' + esc(u.scroll) + '</span></div><div class="lp-view" tabindex="0"><img src="' + B + p0 + '.jpg" alt="' + esc(t.t + ", " + r.pages[0][1]) + '" loading="lazy"></div></div></article>';
+    }).join("");
+    var gal = C.gallery.map(function (g) {
+      return '<button type="button" class="lp-g card" data-k="' + g[0] + '"><span class="lp-g-img"><img src="' + B + g[0] + '-t.jpg" alt="" loading="lazy"></span><span class="lp-g-txt"><strong>' + esc(g[3][lang]) + '</strong><span>' + g[1] + " · " + g[2] + "</span></span></button>";
+    }).join("");
+    return '<section class="lp-camp"><div class="lp-camp-head"><span class="tag">' + u.kicker + '</span><h2 class="display">' + esc(u.title) + "</h2><p>" + esc(u.intro) + "</p></div>" + rolls +
+      '<div class="sec-head lp-gal-head"><h2 class="display">' + u.galTitle + "</h2><p>" + u.galText + '</p></div><div class="lp-gal">' + gal + "</div>" +
+      '<div class="lb lp-lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + u.close + '</button><div class="lp-lb-view" tabindex="0"><img alt=""></div><p class="lb-cap"></p></div></div></section>';
+  }
+
+  function bindLP() {
+    var C = window.LP && window.LP.camp; if (!C) return;
+    document.querySelectorAll(".lp-mk button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var art = b.closest(".lp-rollout"), view = art.querySelector(".lp-view"), img = view.querySelector("img");
+        art.querySelectorAll(".lp-mk button").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+        img.src = C.base + b.dataset.k + ".jpg"; img.alt = art.querySelector("h3").textContent + ", " + b.textContent; view.scrollTop = 0;
+      });
+    });
+    var lb = document.querySelector(".lp-lb"); if (!lb) return;
+    var lv = lb.querySelector(".lp-lb-view"), li = lv.querySelector("img"), cap = lb.querySelector(".lb-cap"), last;
+    function close() { lb.hidden = true; li.removeAttribute("src"); if (last) last.focus(); }
+    document.querySelectorAll(".lp-g").forEach(function (g) {
+      g.addEventListener("click", function () {
+        last = g; li.src = C.base + g.dataset.k + ".jpg"; li.alt = g.querySelector("strong").textContent;
+        cap.textContent = g.querySelector("strong").textContent + " · " + g.querySelector(".lp-g-txt span").textContent;
+        lb.hidden = false; lv.scrollTop = 0; lb.querySelector(".lb-x").focus();
+      });
+    });
+    lb.querySelector(".lb-x").addEventListener("click", close);
+    lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) close(); });
   }
 
   // Featured AI process, only on the ai-production case.
@@ -284,7 +325,7 @@
     var page = document.body.dataset.page;
     document.getElementById("app").innerHTML = top() + (page === "case" ? casePage() : home());
     if (page === "home") document.title = "Paulo Ralha | Portfolio";
-    bindAds(); bindAI(); bindTV();
+    bindAds(); bindAI(); bindTV(); bindLP();
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.addEventListener("click", function () { lang = b.dataset.lang; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
     });

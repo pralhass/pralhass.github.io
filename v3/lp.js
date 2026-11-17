@@ -21,3 +21,36 @@ window.LP = {
     roll: [["Barra “pedir orçamento” fixa no hero", [["FR", "+73%"], ["US", "+62%"], ["FR Uplifts", "+55%"], ["BE-FR", "+30%"], ["UK", "+18%"], ["PT", "+13%"]]], ["“Aumente o valor da sua casa”", [["CH-FR", "+155%"], ["NO", "+59%"], ["BE-FR", "+11%"]]], ["Imagens do produto na página de preço", [["BE-NL", "+131%"], ["NO", "+12%"], ["SK", "+7%"]]]]
   }
 };
+
+// Campaign landing pages: full-page captures in media/lp/ (k = file name).
+window.LP.camp = {
+  base: "../media/lp/",
+  rollouts: [
+    { id: "x23", pages: [["xmas2023-pt", "PT"], ["xmas2023-pt-sco", "PT scooters"], ["xmas2023-es", "ES"], ["xmas2023-be-fr", "BE-FR"], ["xmas2023-be-nl", "BE-NL"], ["xmas2023-ch-de", "CH-DE"], ["xmas2023-ch-fr", "CH-FR"], ["xmas2023-ch-it", "CH-IT"], ["xmas2023-sk", "SK"], ["xmas2023-cz", "CZ"]],
+      en: { t: "Christmas 2023, one campaign in ten versions", d: "One Christmas idea adapted for eight markets and two product lines. Each market kept its own offer, form and legal text, the visual language and the page structure were shared." },
+      pt: { t: "Natal 2023, uma campanha em dez versões", d: "Uma ideia de Natal adaptada a oito mercados e duas linhas de produto. Cada mercado manteve a sua oferta, formulário e texto legal, a linguagem visual e a estrutura da página eram comuns." } },
+    { id: "x22", pages: [["natal2022-pt", "PT"], ["natal2022-pt-sco", "PT scooters"], ["navidad2022-es", "ES"], ["xmas2022-be-fr", "BE-FR"], ["xmas2022-be-nl", "BE-NL"], ["xmas2022-sk", "SK"], ["xmas2022-cz", "CZ"]],
+      en: { t: "Christmas 2022, seven markets", d: "The offer changed from market to market, VAT paid by Stannah, a smart TV, a free scooter, while the design system, the Santa photography and the page flow were shared." },
+      pt: { t: "Natal 2022, sete mercados", d: "A oferta mudava de mercado para mercado, IVA oferecido, uma smart TV, uma scooter grátis, mas o sistema de design, a fotografia do Pai Natal e o fluxo da página eram comuns." } }
+  ],
+  gallery: [
+    ["mundial2026-pt", "PT", "2026", { en: "World Cup", pt: "Mundial" }],
+    ["xmas2025-pt", "PT", "2025", { en: "Christmas, spin the prize wheel", pt: "Natal, roleta de brindes" }],
+    ["xmas2025-ch", "CH-DE", "2025", { en: "Christmas gift", pt: "Prenda de Natal" }],
+    ["ferias2024-pt", "PT", "2024", { en: "Win a holiday for two", pt: "Ganhe férias para dois" }],
+    ["ambassador-pt", "PT", "2024", { en: "Ambassador programme", pt: "Programa de embaixadores" }],
+    ["ambassador-be", "BE", "2024", { en: "Ambassador programme", pt: "Programa de embaixadores" }],
+    ["summer2023-pt", "PT", "2023", { en: "Summer, surprise offer", pt: "Verão, oferta surpresa" }],
+    ["primavera2023-pt-sco", "PT", "2023", { en: "Spring, scooters", pt: "Primavera, scooters" }],
+    ["compreagora2023-pt", "PT", "2022", { en: "Buy now, pay next year", pt: "Compre agora, pague em 2023" }],
+    ["blackmonth-pt", "PT", "2022", { en: "Black Month, stairlifts", pt: "Black Month, elevadores de escadas" }],
+    ["blackmonth-all-pt", "PT", "2022", { en: "Black Month, full range", pt: "Black Month, toda a gama" }],
+    ["summer2022-pt", "PT", "2022", { en: "Super Summer", pt: "Super Verão" }],
+    ["natal2021-pt", "PT", "2021", { en: "Christmas hamper", pt: "Cabaz de Natal" }],
+    ["natal2020-pt", "PT", "2020", { en: "Christmas wish list", pt: "Lista de desejos de Natal" }],
+    ["natal2019-pt", "PT", "2019", { en: "Christmas offer", pt: "Oferta de Natal" }],
+    ["natale2019-it", "IT", "2019", { en: "Christmas offer", pt: "Oferta de Natal" }]
+  ],
+  en: { kicker: "Campaign landing pages", title: "Seasonal pages, built to convert", intro: "Christmas, summer and spring campaigns, prize draws and referral programmes. My team designed and built the landing pages for the paid campaigns, usually one design rolled out to several markets at once.", pick: "Choose a market", scroll: "Scroll inside the page", galTitle: "More campaigns", galText: "Open any page to see it full length.", close: "Close" },
+  pt: { kicker: "Landing pages de campanha", title: "Páginas sazonais, feitas para converter", intro: "Campanhas de Natal, verão e primavera, sorteios de prémios e programas de referência. A minha equipa desenhou e montou as landing pages das campanhas pagas, quase sempre um design lançado em vários mercados ao mesmo tempo.", pick: "Escolha um mercado", scroll: "Faça scroll dentro da página", galTitle: "Mais campanhas", galText: "Abra qualquer página para a ver completa.", close: "Fechar" }
+};
