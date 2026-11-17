@@ -164,8 +164,8 @@
 
   function teamPanel() {
     var T = window.AI.team, x = T[lang];
-    return '<section class="team"><div class="sec-head"><h2 class="display">' + x.title + "</h2><p>" + esc(x.text) + '</p></div><div class="team-grid">' +
-      T.items.map(function (it) { var t = it[lang]; return '<figure class="card"><div class="team-media" style="aspect-ratio:' + it.r + '"><video controls playsinline preload="metadata" poster="' + T.base + it.f + '.jpg" src="' + T.base + it.f + '.mp4"></video></div><figcaption><strong>' + esc(t[0]) + "</strong><span>" + esc(t[1]) + "</span></figcaption></figure>"; }).join("") + "</div></section>";
+    return '<section class="team card"><div class="bulk-head"><h2 class="display">' + x.title + "</h2><p>" + esc(x.text) + '</p></div><div class="team-grid">' +
+      T.items.map(function (it) { var t = it[lang]; return '<figure><div class="team-media" style="aspect-ratio:' + it.r + '"><video controls playsinline preload="metadata" poster="' + T.base + it.f + '.jpg" src="' + T.base + it.f + '.mp4"></video></div><figcaption><strong>' + esc(t[0]) + "</strong><span>" + esc(t[1]) + "</span></figcaption></figure>"; }).join("") + "</div></section>";
   }
 
   function bindAI() {
