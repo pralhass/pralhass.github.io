@@ -341,3 +341,7 @@ img { display: block; max-width: 100%; }
   .bts-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .bts-grid { grid-auto-flow: dense; }
+.cast { padding: clamp(20px, 3vw, 36px) clamp(22px, 3.4vw, 44px); margin-bottom: 16px; display: grid; grid-template-columns: minmax(200px, 280px) 1fr; gap: clamp(18px, 3vw, 44px); background: var(--yellow); }
+.cast h3 { margin: 0; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.1; }
+.cast p { margin: 0; font-size: 17px; max-width: 72ch; }
+@media (max-width: 900px) { .cast { grid-template-columns: 1fr; } }

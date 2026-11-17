@@ -121,7 +121,7 @@
     }).join("");
     var bts = ""; for (var b = 1; b <= 14; b++) bts += '<img src="' + B + "bts/bts-" + (b < 10 ? "0" : "") + b + '.jpg" alt="" loading="lazy">';
     var more = x.more.map(function (m) { return "<figure>" + vid(m.k) + "<figcaption><strong>" + esc(m.t) + '</strong><span class="m">' + esc(m.m) + "</span><span>" + esc(m.d) + "</span></figcaption></figure>"; }).join("");
-    return '<section class="tv-intro card"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + "</p></section>" + spots +
+    return '<section class="tv-intro card"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p></section><section class="cast card"><h3>' + esc(x.castTitle) + "</h3><p>" + esc(x.cast) + "</p></section>" + spots +
       '<section class="bts card"><div class="bulk-head"><h2 class="display">' + x.btsTitle + "</h2><p>" + esc(x.btsText) + '</p></div><div class="bts-grid">' + bts + "</div></section>" +
       '<section class="more-tv"><div class="sec-head"><h2 class="display">' + x.moreTitle + "</h2><p>" + esc(x.moreText) + '</p></div><div class="more-grid">' + more + "</div></section>";
   }
