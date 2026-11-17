@@ -57,7 +57,7 @@
     }).join("");
     var projects = S.cases.map(function (c) {
       var x = c[lang];
-      return '<a class="project card" href="case.html?c=' + c.slug + '"><img src="' + IMG[c.slug] + '" alt="" loading="lazy">' +
+      return '<a class="project card" href="case.html?c=' + c.slug + '"><video class="cover" muted loop playsinline preload="none" poster="' + IMG[c.slug] + '" data-src="' + C + "anim-" + c.slug + '.mp4" aria-hidden="true"></video>' +
         '<div class="txt"><span class="tag">' + esc(x.tag) + "</span><h3>" + esc(x.title) + '</h3><p class="sum">' + esc(x.summary) + '</p><span class="go">' + t.read + "</span></div></a>";
     }).join("");
     return '<main class="wrap">' +
@@ -184,6 +184,20 @@
     return '<section class="lp-camp"><div class="lp-camp-head"><span class="tag">' + u.kicker + '</span><h2 class="display">' + esc(u.title) + "</h2><p>" + esc(u.intro) + "</p></div>" + rolls +
       '<div class="sec-head lp-gal-head"><h2 class="display">' + u.galTitle + "</h2><p>" + u.galText + '</p></div><div class="lp-gal">' + gal + "</div>" +
       '<div class="lb lp-lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + u.close + '</button><div class="lb-tabs lp-lb-tabs"></div><div class="lp-lb-view" tabindex="0"><img alt=""></div><p class="lb-cap"></p></div></div></section>';
+  }
+
+  // Stop-motion covers: load and play only while on screen, never with reduced motion.
+  function bindCovers() {
+    var vids = document.querySelectorAll("video.cover"); if (!vids.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.25 });
+    vids.forEach(function (v) { io.observe(v); });
   }
 
   function bindNav() {
@@ -349,7 +363,7 @@
     var page = document.body.dataset.page;
     document.getElementById("app").innerHTML = top() + (page === "case" ? casePage() : home());
     if (page === "home") document.title = "Paulo Ralha | Portfolio";
-    bindAds(); bindAI(); bindTV(); bindLP(); bindNav();
+    bindAds(); bindAI(); bindTV(); bindLP(); bindNav(); bindCovers();
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.addEventListener("click", function () { lang = b.dataset.lang; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
     });
