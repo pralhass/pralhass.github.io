@@ -122,8 +122,30 @@
     var bts = ""; for (var b = 1; b <= 14; b++) bts += '<img src="' + B + "bts/bts-" + (b < 10 ? "0" : "") + b + '.jpg?v=2" alt="" loading="lazy">';
     var more = x.more.map(function (m) { return "<figure>" + vid(m.k) + "<figcaption><strong>" + esc(m.t) + '</strong><span class="m">' + esc(m.m) + "</span><span>" + esc(m.d) + "</span></figcaption></figure>"; }).join("");
     return '<section class="tv-intro card"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p></section><section class="cast card"><h3>' + esc(x.castTitle) + "</h3><p>" + esc(x.cast) + "</p></section>" + spots +
+      elSection(x.el, B + "elegance/") +
       '<section class="bts card"><div class="bulk-head"><h2 class="display">' + x.btsTitle + "</h2><p>" + esc(x.btsText) + '</p></div><div class="bts-grid">' + bts + "</div></section>" +
       '<section class="more-tv"><div class="sec-head"><h2 class="display">' + x.moreTitle + "</h2><p>" + esc(x.moreText) + '</p></div><div class="more-grid">' + more + "</div></section>";
+  }
+
+  function elSection(e, B) {
+    var ver = e.versions;
+    return '<section class="el card"><div class="el-top"><div class="el-player"><div class="tv-frame"><video controls playsinline preload="none" poster="' + B + "el-" + ver[0][0] + '.jpg" src="' + B + "el-" + ver[0][0] + '.mp4"></video></div><div class="el-ver" role="group">' +
+      ver.map(function (v, i) { return '<button type="button" data-v="' + v[0] + '" aria-pressed="' + (i === 0) + '">' + esc(v[1]) + "</button>"; }).join("") + '</div></div><div class="spot-txt"><span class="tag">' + esc(e.kicker) + '</span><h3 class="display">' + esc(e.title) + "</h3><p>" + esc(e.intro) + '</p><div class="chips">' +
+      e.roles.map(function (r) { return '<span class="chip">' + esc(r) + "</span>"; }).join("") + "</div></div></div>" +
+      '<div class="el-row"><div class="el-script"><h4>' + esc(e.scriptTitle) + "</h4><ol>" + e.scenes.map(function (sc) { return "<li><b>" + esc(sc[0]) + "</b><span>" + esc(sc[1]) + "</span></li>"; }).join("") + "</ol></div>" +
+      '<figure class="el-crew"><img src="' + B + 'crew.jpg" alt="" loading="lazy"><figcaption>' + esc(e.crewCap) + "</figcaption></figure></div>" +
+      '<div class="el-board"><h4>' + esc(e.boardTitle) + "</h4><p>" + esc(e.boardText) + '</p><div class="el-boards">' + [1, 2, 3].map(function (k) { return '<img src="' + B + "story-" + k + '.jpg" alt="" loading="lazy">'; }).join("") + "</div></div>" +
+      '<div class="el-row el-post"><figure><img src="' + B + 'premiere.jpg" alt="" loading="lazy"><figcaption>' + esc(e.editCap) + '</figcaption></figure><p class="el-sound">' + esc(e.soundText) + "</p></div></section>";
+  }
+
+  function bindTV() {
+    document.querySelectorAll(".el-ver button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var wrap = b.closest(".el-player"), v = wrap.querySelector("video"), base = v.getAttribute("src").replace(/el-\d+\.mp4$/, "");
+        wrap.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+        v.pause(); v.poster = base + "el-" + b.dataset.v + ".jpg"; v.src = base + "el-" + b.dataset.v + ".mp4"; v.load();
+      });
+    });
   }
 
   // Featured AI process, only on the ai-production case.
@@ -253,7 +275,7 @@
     var page = document.body.dataset.page;
     document.getElementById("app").innerHTML = top() + (page === "case" ? casePage() : home());
     if (page === "home") document.title = "Paulo Ralha | Portfolio";
-    bindAds(); bindAI();
+    bindAds(); bindAI(); bindTV();
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.addEventListener("click", function () { lang = b.dataset.lang; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
     });
