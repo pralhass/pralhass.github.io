@@ -26,10 +26,7 @@ window.ADS = {
       pt: { t: "Joya", d: "Apresentação de um novo modelo de cadeira elevatória." }, video: true },
     { file: "6822", market: { en: "Portugal", pt: "Portugal" },
       en: { t: "Made here, start to finish", d: "Static ad built on one fact: the only stairlift manufacturer in the country." },
-      pt: { t: "Do início ao fim", d: "Anúncio estático assente num facto: o único fabricante de cadeiras elevatórias no país." }, video: false },
-    { file: "8097s", market: { en: "All markets", pt: "Todos os mercados" },
-      en: { t: "You always have choice (static)", d: "The same comparison as a static for feed and story." },
-      pt: { t: "You always have choice (estático)", d: "A mesma comparação em estático, para feed e story." }, video: false }
+      pt: { t: "Do início ao fim", d: "Anúncio estático assente num facto: o único fabricante de cadeiras elevatórias no país." }, video: false }
   ],
   bulk: {
     en: { title: "One concept, 11 markets", text: "A UGC-style ad made with generative AI, then localised into 11 markets and languages, from Spanish and Czech to Thai and Japanese. In the first four markets with results, it more than doubled CTR against the control.", ctr: "CTR vs control", play: "Play with sound" },
