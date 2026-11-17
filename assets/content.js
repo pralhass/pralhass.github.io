@@ -78,6 +78,11 @@ window.SITE = {
     { years: "2002 - 2009", company: "Foto Humberto", en: "Video Editor and Camera Operator", pt: "Editor de Vídeo e Operador de Câmara" }
   ],
 
+  education: [
+    { year: "2010", en: "BSc in Computer Graphics and Multimedia Engineering", pt: "Licenciatura em Engenharia de Computação Gráfica e Multimédia", school: { en: "Instituto Politécnico de Viana do Castelo, ESTG", pt: "Instituto Politécnico de Viana do Castelo, ESTG" } },
+    { year: "2003", en: "Secondary education, Computer Science", pt: "Ensino secundário, Informática", school: { en: "Escola Secundária de Barcelos", pt: "Escola Secundária de Barcelos" } }
+  ],
+
   cases: [
     {
       slug: "creative-testing",

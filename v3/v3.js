@@ -1,23 +1,25 @@
 // Portfolio v3 renderer: playful studio. Reuses copy from ../assets/content.js.
 (function () {
   var S = window.SITE;
-  var C = "https://d8j0ntlcm91z4.cloudfront.net/user_3AOnmXGj7aKXk82JBr8QXOuv8AQ/hf_20261116_";
-  // Animated stickers (GIF) and case covers generated in Higgsfield.
+  // v3 shows only Stannah work: the pre-Stannah case stays in v1 only.
+  S.cases = S.cases.filter(function (c) { return c.slug !== "earlier-work"; });
+  var C = "../media/hf/";
+  // Animated stickers (GIF) and case covers generated in Higgsfield, kept in media/hf/.
   var IMG = {
-    badge: C + "191758_46cad621-d6c1-41f4-b15e-013b1819cfb6.gif",
-    tv: C + "191758_9326e7b9-da65-4e15-a5d4-c44b8dac9c15.gif",
-    hand: C + "191757_83060bf0-9674-43b6-9cc1-e4d95bcd8a59.gif",
-    smile: C + "191756_a278aec4-b958-43bf-aad0-e1fd458d4101.gif",
-    "creative-testing": C + "191757_9e286d62-d8b1-4c0b-a56e-eb32256006db.png",
-    "ai-production": C + "191757_b4990b3a-69d0-4160-9ecb-d41861ff8566.png",
-    "tv-spots": C + "191756_a39283e6-3835-4570-82a0-4ffc904df40c.png",
-    "landing-pages": C + "191758_28d12bb8-a602-48b4-863d-c7c3be26b716.png",
-    motion: C + "191757_a24bf127-d064-4e6d-a14d-627ba539f68e.png",
-    "earlier-work": C + "191756_962cf579-5772-422d-a32f-8885a2337402.png"
+    badge: C + "badge.gif",
+    tv: C + "tv.gif",
+    hand: C + "hand.gif",
+    smile: C + "smile.gif",
+    "creative-testing": C + "creative-testing.jpg",
+    "ai-production": C + "ai-production.jpg",
+    "tv-spots": C + "tv-spots.jpg",
+    "landing-pages": C + "landing-pages.jpg",
+    motion: C + "motion.jpg",
+    "earlier-work": C + "earlier-work.jpg"
   };
   var T = {
-    en: { behind: "Behind the visuals", career: "Career", toolkit: "Toolkit", projects: "Featured projects", read: "Read the case" },
-    pt: { behind: "Por trás dos visuais", career: "Percurso", toolkit: "Ferramentas", projects: "Projetos em destaque", read: "Ver o caso" }
+    en: { behind: "Behind the visuals", career: "Career", edu: "Education", toolkit: "Toolkit", projects: "Featured projects", read: "Read the case" },
+    pt: { behind: "Por trás dos visuais", career: "Percurso", edu: "Formação académica", toolkit: "Ferramentas", projects: "Projetos em destaque", read: "Ver o caso" }
   };
   var TOOLS = ["Premiere Pro", "After Effects", "Photoshop", "Illustrator", "Adobe Express", "Canva", "Higgsfield", "Seedance", "Claude", "Meta Ads", "Google Ads", "GA4", "Unbounce", "WordPress", "Make", "Zapier", "Blender"];
 
@@ -38,10 +40,15 @@
       '<button type="button" data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button></nav></header>';
   }
 
+  function cvLink(l, label) { return '<a href="../assets/cv/paulo-ralha-cv-' + l + '.pdf" target="_blank" rel="noopener">' + esc(label) + "</a>"; }
+
   function home() {
     var u = S.ui[lang], t = T[lang];
     var exp = S.experience.map(function (e) {
       return '<li><span class="yrs">' + e.years.split(" - ")[0] + '</span><span><span class="co">' + esc(e.company) + '</span><span class="rl">' + esc(e[lang]) + "</span></span></li>";
+    }).join("");
+    var edu = (S.education || []).map(function (e) {
+      return '<li><span class="yrs">' + e.year + '</span><span><span class="co">' + esc(e[lang]) + '</span><span class="rl">' + esc(e.school[lang]) + "</span></span></li>";
     }).join("");
     var projects = S.cases.map(function (c) {
       var x = c[lang];
@@ -56,7 +63,7 @@
       '<section id="about" class="behind card"><div><h2 class="display">' + t.behind + "</h2>" +
       S.about[lang].map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("") + '</div><img class="hand" src="' + IMG.hand + '" alt=""></section>' +
 
-      '<section class="cols card"><div><h3>' + t.career + '</h3><ul class="timeline">' + exp + "</ul></div>" +
+      '<section class="cols card"><div><h3>' + t.career + '</h3><ul class="timeline">' + exp + "</ul>" + (edu ? '<h3 class="edu-h">' + t.edu + '</h3><ul class="timeline">' + edu + "</ul>" : "") + "</div>" +
       "<div><h3>" + t.toolkit + '</h3><div class="chips">' + TOOLS.map(function (x) { return '<span class="chip">' + x + "</span>"; }).join("") + "</div></div></section>" +
 
       '<section id="work"><div class="proj-head"><h2 class="display">' + t.projects + '</h2><img src="' + IMG.tv + '" alt=""></div>' +
@@ -64,7 +71,7 @@
 
       '<section id="contact" class="contact card"><h2 class="display">' + u.contact + "</h2><p>" + esc(u.contactText) + "</p>" +
       '<a class="mail" href="mailto:' + S.email + '">' + S.email + "</a>" +
-      '<div class="links"><a href="' + S.linkedin + '" target="_blank" rel="noopener">LinkedIn</a><span class="soon">' + u.cv + ": " + u.cvSoon + "</span></div></section></main>";
+      '<div class="links"><a href="' + S.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' + cvLink(lang, u.cv + " (PDF)") + cvLink(lang === "pt" ? "en" : "pt", lang === "pt" ? "CV in English" : "CV em português") + "</div></section></main>";
   }
 
   function casePage() {
