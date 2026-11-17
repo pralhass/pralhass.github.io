@@ -79,7 +79,7 @@
       '<header class="case-head"><div><h1 class="display">' + esc(x.title) + '</h1><span class="tag">' + esc(x.tag) + '</span><p class="summary">' + esc(x.summary) + "</p></div></header>" +
       '<div class="case-cover card"><img src="' + IMG[c.slug] + '" alt=""></div>' +
       '<section class="story"><div class="card"><h2>' + u.challenge + "</h2><p>" + esc(x.challenge) + '</p></div><div class="card"><h2>' + u.approach + "</h2><p>" + esc(x.approach) + '</p></div><div class="card"><h2>' + u.result + "</h2><p>" + esc(x.result) + "</p></div></section>" +
-      (c.slug === "creative-testing" && window.ADS ? adsSections() : c.slug === "ai-production" && window.AI ? aiSections() : c.slug === "tv-spots" && window.TV ? tvSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
+      (c.slug === "creative-testing" && window.ADS ? adsSections() : c.slug === "ai-production" && window.AI ? aiSections() : c.slug === "tv-spots" && window.TV ? tvSections() : c.slug === "landing-pages" && window.LP ? lpSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
       '<a class="next card" href="case.html?c=' + next.slug + '"><span class="label">' + u.next + '</span><span class="display">' + esc(next[lang].title) + "</span></a></main>";
   }
 
@@ -146,6 +146,15 @@
         v.pause(); v.poster = base + "el-" + b.dataset.v + ".jpg"; v.src = base + "el-" + b.dataset.v + ".mp4"; v.load();
       });
     });
+  }
+
+  // Landing pages case.
+  function lpSections() {
+    var x = window.LP[lang];
+    return '<section class="lp-nums card"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p><div class="ai-stats">' +
+      x.stats.map(function (s) { return "<div><b>" + s[0] + "</b><span>" + esc(s[1]) + "</span></div>"; }).join("") + '</div><div class="lp-cols"><div><h3>' + esc(x.topTitle) + '</h3><ul class="lp-top">' +
+      x.top.map(function (t) { return '<li><span class="mk-code">' + t[0] + "</span><span>" + esc(t[1]) + "</span><b>" + t[2] + "</b></li>"; }).join("") + "</ul></div><div><h3>" + esc(x.rollTitle) + "</h3>" +
+      x.roll.map(function (r) { return '<div class="lp-roll"><strong>' + esc(r[0]) + '</strong><div class="chips">' + r[1].map(function (m) { return '<span class="chip">' + m[0] + " <b>" + m[1] + "</b></span>"; }).join("") + "</div></div>"; }).join("") + "</div></div></section>";
   }
 
   // Featured AI process, only on the ai-production case.

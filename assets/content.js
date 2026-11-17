@@ -149,17 +149,17 @@ window.SITE = {
         title: "Landing pages and A/B tests",
         tag: "Unbounce · WordPress",
         summary: "Designing and testing the pages that paid traffic lands on.",
-        challenge: "Every paid campaign lands on a page, and small issues on those pages cost leads in every market.",
-        approach: "Design, QA and A/B testing of landing pages, plus an AI-assisted audit of more than 230 live pages across markets.",
-        result: "A shared quality standard for every live landing page, with issues logged and fixed market by market."
+        challenge: "Every paid campaign lands on a page, and every seasonal offer needs its own page, in several markets and languages, on a tight deadline.",
+        approach: "My team designed and built the landing pages in Unbounce and WordPress: campaign pages for Christmas, spring and summer offers and prize draws, and the variants for A/B tests across markets.",
+        result: "Campaign pages rolled out to several markets at once, and 64 A/B tests with a positive result since 2025."
       },
       pt: {
         title: "Landing pages e testes A/B",
         tag: "Unbounce · WordPress",
         summary: "Desenhar e testar as páginas onde o tráfego pago aterra.",
-        challenge: "Todas as campanhas pagas aterram numa página, e pequenos problemas nessas páginas custam leads em todos os mercados.",
-        approach: "Design, controlo de qualidade e testes A/B de landing pages, e uma auditoria assistida por IA a mais de 230 páginas publicadas.",
-        result: "Um padrão de qualidade comum a todas as landing pages publicadas, com os problemas registados e corrigidos mercado a mercado."
+        challenge: "Todas as campanhas pagas aterram numa página, e cada oferta sazonal precisa da sua própria página, em vários mercados e línguas, com prazos apertados.",
+        approach: "A minha equipa desenhou e montou as landing pages em Unbounce e WordPress: páginas de campanha para ofertas de Natal, primavera e verão e passatempos, e as variantes dos testes A/B nos vários mercados.",
+        result: "Páginas de campanha lançadas em vários mercados ao mesmo tempo, e 64 testes A/B com resultado positivo desde 2025."
       },
       images: 3
     },

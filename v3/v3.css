@@ -378,3 +378,19 @@ img { display: block; max-width: 100%; }
 .el-boards img { background: #fff; }
 .el-post .el-sound { margin: 0; align-self: center; font-size: 16px; }
 @media (max-width: 900px) { .el-boards { grid-template-columns: 1fr; } }
+/* Landing pages case */
+.lp-nums { padding: clamp(22px, 3.4vw, 44px); margin-bottom: clamp(40px, 6vw, 72px); }
+.lp-nums .tag { display: inline-block; padding: 6px 13px; border-radius: 999px; background: #DCF6F8; font-weight: 700; font-size: 14px; }
+.lp-nums h2 { font-size: clamp(34px, 4.8vw, 72px); margin: 14px 0 14px; }
+.lp-nums > p { max-width: 70ch; font-size: 18px; margin: 0 0 24px; }
+.lp-cols { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(20px, 3vw, 40px); margin-top: 32px; }
+.lp-cols h3 { margin: 0 0 12px; font-size: 20px; }
+.lp-top { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.lp-top li { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; background: var(--paper); border-radius: 12px; padding: 10px 14px; font-size: 15px; }
+.lp-top b { background: var(--yellow); border-radius: 999px; padding: 3px 10px; font-size: 14px; }
+.mk-code { font-weight: 700; font-size: 13px; }
+.lp-roll { background: var(--paper); border-radius: 16px; padding: 14px 16px; margin-bottom: 10px; }
+.lp-roll strong { display: block; margin-bottom: 10px; }
+.lp-roll .chip { background: #fff; font-size: 13px; padding: 6px 11px; }
+.lp-roll .chip b { color: #0a7d4a; }
+@media (max-width: 900px) { .lp-cols { grid-template-columns: 1fr; } }
