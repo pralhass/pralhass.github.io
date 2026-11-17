@@ -86,22 +86,28 @@
 
   // Ads wall + bulk rollout, only on the creative-testing case.
   function adsSections() {
-    var A = window.ADS, ui = A.ui[lang], b = A.bulk, bt = b[lang];
+    var A = window.ADS, ui = A.ui[lang];
     var wall = A.loose.map(function (a, i) {
       var x = a[lang], f0 = (a.formats || ["post"])[0], src = A.base + a.file + "-" + f0;
       var media = a.video
         ? '<video muted loop playsinline preload="none" poster="' + src + '.jpg" data-src="' + src + '.mp4"></video>'
         : '<img src="' + src + '.jpg" alt="" loading="lazy">';
-      return '<button type="button" class="ad card" data-ad="' + i + '"><span class="ad-media' + (f0 === "story" ? " is-story" : "") + '">' + media + "</span>" +
+      return '<button type="button" class="ad card" data-ad="' + i + '"><span class="ad-media' + (f0 === "story" ? " is-story" : "") + '">' + media + (a.res ? '<span class="ad-res">' + a.res.map(function (r) { return "<b>" + r + "</b>"; }).join("") + "</span>" : "") + "</span>" +
         '<span class="ad-txt"><span class="tag">' + esc(a.market[lang]) + "</span><strong>" + esc(x.t) + "</strong><span>" + esc(x.d) + "</span></span></button>";
     }).join("");
-    var tiles = b.markets.map(function (m, i) {
-      var src = A.base + "bulk/" + m.k;
-      return '<button type="button" class="mk" data-bulk="' + i + '"><video muted loop playsinline autoplay preload="metadata" poster="' + src + '.jpg" src="' + src + '-loop.mp4"></video>' +
-        '<span class="mk-name">' + esc(m[lang]) + "</span>" + (m.ctr ? '<span class="mk-ctr">' + m.ctr + " CTR</span>" : "") + "</button>";
+    var bulks = A.bulks.map(function (b, bi) {
+      var bt = b[lang];
+      var tiles = b.markets.map(function (m, i) {
+        var src = A.base + b.dir + m.k;
+        var media = b.video
+          ? '<video muted loop playsinline autoplay preload="metadata" poster="' + src + '.jpg" src="' + src + '-loop.mp4"></video>'
+          : '<img src="' + src + '.jpg" alt="" loading="lazy">';
+        return '<button type="button" class="mk" data-bulk="' + bi + ":" + i + '">' + media +
+          '<span class="mk-name">' + esc(m[lang]) + "</span>" + (m.ctr ? '<span class="mk-ctr">' + m.ctr + " CTR</span>" : "") + "</button>";
+      }).join("");
+      return '<section class="bulk card"><div class="bulk-head"><h2 class="display">' + bt.title + "</h2><p>" + bt.text + '</p></div><div class="mk-grid">' + tiles + "</div></section>";
     }).join("");
-    return '<section class="ads-wall"><div class="sec-head"><h2 class="display">' + ui.wall + "</h2><p>" + ui.wallText + '</p></div><div class="ads-grid">' + wall + "</div></section>" +
-      '<section class="bulk card"><div class="bulk-head"><h2 class="display">' + bt.title + "</h2><p>" + bt.text + '</p></div><div class="mk-grid">' + tiles + "</div></section>" +
+    return '<section class="ads-wall"><div class="sec-head"><h2 class="display">' + ui.wall + "</h2><p>" + ui.wallText + '</p></div><div class="ads-grid">' + wall + "</div></section>" + bulks +
       '<div class="lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + ui.close + '</button><div class="lb-tabs"></div><div class="lb-stage"></div><p class="lb-cap"></p></div></div>';
   }
 
@@ -137,15 +143,15 @@
             show(base + "-" + t.dataset.f, a.video);
           });
         });
-        cap.textContent = a[lang].t + " | " + a.market[lang];
+        cap.textContent = a[lang].t + " | " + a.market[lang] + (a.res ? " | " + a.res.join(", ") : "");
         show(base + "-" + fm[0], a.video); open();
       });
     });
     document.querySelectorAll("[data-bulk]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var m = A.bulk.markets[+btn.dataset.bulk];
-        tabs.innerHTML = ""; cap.textContent = A.bulk[lang].title + " | " + m[lang] + (m.ctr ? " (" + A.bulk[lang].ctr + " " + m.ctr + ")" : "");
-        show(A.base + "bulk/" + m.k, true); open();
+        var p = btn.dataset.bulk.split(":"), b = A.bulks[+p[0]], m = b.markets[+p[1]];
+        tabs.innerHTML = ""; cap.textContent = b[lang].title + " | " + m[lang] + (m.ctr ? " (" + ui.ctr + " " + m.ctr + ")" : "");
+        show(A.base + b.dir + m.k, b.video); open();
       });
     });
   }

@@ -190,3 +190,8 @@ img { display: block; max-width: 100%; }
 /* Story-only ads: keep the 4:5 card, show the 9:16 video centred inside it */
 .ad-media.is-story { background: #1f2328; }
 .ad-media.is-story video, .ad-media.is-story img { object-fit: contain; }
+.ad-media { position: relative; }
+.ad-res { position: absolute; left: 8px; top: 8px; display: flex; flex-wrap: wrap; gap: 4px; }
+.ad-res b { background: var(--yellow); color: var(--ink); border-radius: 999px; padding: 4px 9px; font-size: 12px; font-weight: 800; }
+.mk img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bulk + .bulk { margin-top: 28px; }
