@@ -2,7 +2,12 @@
 window.AI = {
   base: "../media/ai/",
   video: "../media/ads/uplifts-story",
+  tv: "tv-ch",
   en: {
+    tvKicker: "Also made with AI",
+    tvTitle: "\u201cWhat if I wasn't here\u201d, a TV spot for Switzerland",
+    tvText: "The same way of working, taken to television: a 15-second stairlift spot for the Swiss market, generated with AI, with a German voice-over and the \u201cVer\u00e4ndert dein Leben\u201d tagline. A daughter steadies her father on the stairs, then the stairlift gives him back his independence. The website and landing page banners were later aligned with the spot, so the journey from TV to web feels like one campaign.",
+    tvFacts: ["15 s · 16:9", "Switzerland (DE)", "AI-generated footage"],
     kicker: "Featured project",
     title: "The grandma who rises through the floor",
     intro: "A UGC-style home lift ad for Meta, made from scratch with AI. One conversation with Claude took it from the idea to the final video and to an After Effects project the team can edit. Claude doesn't make images or video: it thinks, writes the prompts, drives Blender and edits. Images came from Nano Banana Pro and video from Seedance 2.5, both in Higgsfield.",
@@ -37,6 +42,10 @@ window.AI = {
     learn: [["Ask before you prompt", "When something is off, asking \"what would you change?\" gives better prompts than rewriting blind."], ["Previs controls the motion", "A simple Blender render as @source gives full control over camera and timing."], ["State the product rules", "Hold-to-run, the gate, the speed, no works: written once, applied to every prompt."], ["Reference only what matters", "\"Use it only for the lift\" or \"ignore the direction of the video\" stops unwanted copying."], ["Iterate in short sentences", "\"Slower\", \"more natural\", \"swap sides\": small changes without starting over."], ["Brand last, not first", "Make the video work first, then apply colours, fonts and the ads guide."]]
   },
   pt: {
+    tvKicker: "Também feito com IA",
+    tvTitle: "\u201cWhat if I wasn't here\u201d, um spot de TV para a Suíça",
+    tvText: "A mesma forma de trabalhar, levada à televisão: um spot de 15 segundos de cadeiras elevatórias para o mercado suíço, gerado com IA, com voz-off em alemão e a assinatura \u201cVer\u00e4ndert dein Leben\u201d. Uma filha ampara o pai nas escadas e depois a cadeira elevatória devolve-lhe a autonomia. Os banners do site e das landing pages foram depois alinhados com o spot, para que o percurso da TV à web pareça uma só campanha.",
+    tvFacts: ["15 s · 16:9", "Suíça (DE)", "Imagens geradas com IA"],
     kicker: "Projeto em destaque",
     title: "A avó que aparece pelo chão",
     intro: "Um anúncio de elevador doméstico em estilo UGC para Meta, feito do zero com IA. Uma única conversa com o Claude levou-o da ideia ao vídeo final e a um projeto de After Effects que a equipa pode editar. O Claude não gera imagens nem vídeo: pensa, escreve os prompts, controla o Blender e edita. As imagens vieram do Nano Banana Pro e o vídeo do Seedance 2.5, ambos no Higgsfield.",

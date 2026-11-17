@@ -134,6 +134,7 @@
       '<div class="ai-intro"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p><div class="ai-stats">' +
       x.stats.map(function (s) { return "<div><b>" + s[0] + "</b><span>" + esc(s[1]) + "</span></div>"; }).join("") + "</div></div></section>" +
       '<section class="ai-process"><div class="sec-head"><h2 class="display">' + x.processTitle + "</h2></div>" + phases + "</section>" +
+      '<section class="ai-tv card"><div class="tv-frame"><video controls playsinline preload="metadata" poster="' + B + A.tv + '.jpg" src="' + B + A.tv + '.mp4"></video></div><div class="tv-txt"><span class="tag">' + x.tvKicker + '</span><h2 class="display">' + esc(x.tvTitle) + "</h2><p>" + esc(x.tvText) + '</p><div class="chips">' + x.tvFacts.map(function (f) { return '<span class="chip">' + esc(f) + "</span>"; }).join("") + "</div></div></section>" +
       '<section class="ai-learn"><h2 class="display">' + x.learnTitle + '</h2><div class="learn-grid">' + x.learn.map(function (l) { return '<div class="card"><h3>' + esc(l[0]) + "</h3><p>" + esc(l[1]) + "</p></div>"; }).join("") + "</div></section>";
   }
 
