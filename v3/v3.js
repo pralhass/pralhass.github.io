@@ -119,7 +119,7 @@
       var sb = ""; for (var i = 1; i <= 12; i++) sb += '<img src="' + B + "sb/" + s.k + "-" + (i < 10 ? "0" : "") + i + '.jpg" alt="" loading="lazy">';
       return '<article class="spot card"><div class="spot-top">' + vid(s.k) + '<div class="spot-txt"><span class="tag">' + esc(s.meta) + '</span><h3 class="display">' + esc(s.t) + "</h3><p>" + esc(s.d) + '</p></div></div><div class="sb"><span class="sb-label">' + x.sbLabel + '</span><div class="sb-grid">' + sb + "</div></div></article>";
     }).join("");
-    var bts = ""; for (var b = 1; b <= 14; b++) bts += '<img src="' + B + "bts/bts-" + (b < 10 ? "0" : "") + b + '.jpg" alt="" loading="lazy">';
+    var bts = ""; for (var b = 1; b <= 14; b++) bts += '<img src="' + B + "bts/bts-" + (b < 10 ? "0" : "") + b + '.jpg?v=2" alt="" loading="lazy">';
     var more = x.more.map(function (m) { return "<figure>" + vid(m.k) + "<figcaption><strong>" + esc(m.t) + '</strong><span class="m">' + esc(m.m) + "</span><span>" + esc(m.d) + "</span></figcaption></figure>"; }).join("");
     return '<section class="tv-intro card"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p></section><section class="cast card"><h3>' + esc(x.castTitle) + "</h3><p>" + esc(x.cast) + "</p></section>" + spots +
       '<section class="bts card"><div class="bulk-head"><h2 class="display">' + x.btsTitle + "</h2><p>" + esc(x.btsText) + '</p></div><div class="bts-grid">' + bts + "</div></section>" +
