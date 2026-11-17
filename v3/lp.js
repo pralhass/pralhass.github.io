@@ -26,6 +26,27 @@ window.LP = {
 window.LP.camp = {
   base: "../media/lp/",
   rollouts: [
+    { id: "ae", pages: [["uplifts-ae", "AE"]],
+      en: { t: "Uplifts home lift, United Arab Emirates", d: "Lead page for the Uplifts home lift with the local distributor: the S2 and S3 models, what installation involves, FAQ and a quote form placed right under the hero." },
+      pt: { t: "Elevador doméstico Uplifts, Emirados Árabes Unidos", d: "Página de leads do elevador Uplifts com o distribuidor local: os modelos S2 e S3, o processo de instalação, FAQ e um formulário de orçamento logo abaixo do hero." } },
+    { id: "itmob", pages: [["disabili-it", "IT"]],
+      en: { t: "Mobility solutions, Italy", d: "One page for the whole accessibility range, home lift, platform lifts, stairlifts. A needs-based selector sends each visitor to the right product, and the tax incentives are explained in plain words." },
+      pt: { t: "Soluções de mobilidade, Itália", d: "Uma página para toda a gama de acessibilidade, elevador doméstico, plataformas, cadeiras elevatórias. Um seletor por necessidade leva cada visitante ao produto certo, e os benefícios fiscais são explicados de forma simples." } },
+    { id: "us", pages: [["uplifts-us", "US"]],
+      en: { t: "Uplifts home lift, United States", d: "The Uplifts page adapted for the US: North American safety certification up front, review badges and a longer form that matches how US dealers qualify leads." },
+      pt: { t: "Elevador doméstico Uplifts, Estados Unidos", d: "A página Uplifts adaptada aos EUA: a certificação de segurança norte-americana em destaque, selos de avaliações e um formulário mais completo, à medida da forma como os distribuidores americanos qualificam os contactos." } },
+    { id: "joyait", pages: [["joya-it", "IT"], ["joya-es", "ES"]],
+      en: { t: "Joya launch, Italy and Spain", d: "Launch page for Joya, the design stairlift. An editorial layout with large product photography and short videos, closer to a design brand than to a classic lead page." },
+      pt: { t: "Lançamento Joya, Itália e Espanha", d: "Página de lançamento da Joya, a cadeira elevatória de design. Um layout editorial com fotografia grande e vídeos curtos, mais perto de uma marca de design do que de uma landing page clássica." } },
+    { id: "sta", pages: [["stastannah-it", "IT"]],
+      en: { t: "C'è chi Sta e c'è chi Stannah, Italy", d: "Page for the Italian TV campaign: a split-screen hero that tells the before and after in one image, the TV spot, the tax deduction deadline and a quote form." },
+      pt: { t: "C'è chi Sta e c'è chi Stannah, Itália", d: "Página da campanha de TV italiana: um hero em ecrã dividido que conta o antes e o depois numa só imagem, o spot de TV, o prazo da dedução fiscal e o formulário de orçamento." } },
+    { id: "sicuro", pages: [["sicuro-it", "IT"]],
+      en: { t: "Sicuro sicuro?, Italy", d: "A campaign that takes on the belief that a stairlift is too expensive. An animated hero answers the objection, followed by interest-free finance and a payment simulator." },
+      pt: { t: "Sicuro sicuro?, Itália", d: "Uma campanha que responde à ideia de que uma cadeira elevatória é cara demais. Um hero animado responde à objeção, seguido do financiamento sem juros e de um simulador de prestações." } },
+    { id: "infl", pages: [["influencers-es", "ES"]],
+      en: { t: "Influencer campaign, Spain", d: "Landing page for the influencer campaign, written for adult children choosing for a parent: a three-step process, subsidies and finance, and a short quiz about the stairs before the form." },
+      pt: { t: "Campanha com influenciadores, Espanha", d: "Landing page da campanha com influenciadores, escrita para filhos que escolhem pelos pais: um processo em três passos, apoios e financiamento, e um pequeno questionário sobre a escada antes do formulário." } },
     { id: "x22", pages: [["natal2022-pt", "PT"], ["natal2022-pt-sco", "PT scooters"], ["navidad2022-es", "ES"], ["xmas2022-be-fr", "BE-FR"], ["xmas2022-be-nl", "BE-NL"], ["xmas2022-sk", "SK"], ["xmas2022-cz", "CZ"]],
       en: { t: "Christmas 2022, seven markets", d: "The offer changed from market to market, VAT paid by Stannah, a smart TV, a free scooter, while the design system, the Santa photography and the page flow were shared." },
       pt: { t: "Natal 2022, sete mercados", d: "A oferta mudava de mercado para mercado, IVA oferecido, uma smart TV, uma scooter grátis, mas o sistema de design, a fotografia do Pai Natal e o fluxo da página eram comuns." } },
@@ -51,6 +72,6 @@ window.LP.camp = {
     ["natal2019-pt", "PT", "2019", { en: "Christmas offer", pt: "Oferta de Natal" }],
     ["natale2019-it", "IT", "2019", { en: "Christmas offer", pt: "Oferta de Natal" }]
   ],
-  en: { kicker: "Campaign landing pages", title: "Seasonal pages, built to convert", intro: "Christmas, summer and spring campaigns, prize draws and referral programmes. My team designed and built the landing pages for the paid campaigns, usually one design rolled out to several markets at once.", pick: "Choose a market", scroll: "Scroll inside the page", galTitle: "More campaigns", galText: "Open any page to see it full length.", close: "Close" },
-  pt: { kicker: "Landing pages de campanha", title: "Páginas sazonais, feitas para converter", intro: "Campanhas de Natal, verão e primavera, sorteios de prémios e programas de referência. A minha equipa desenhou e montou as landing pages das campanhas pagas, quase sempre um design lançado em vários mercados ao mesmo tempo.", pick: "Escolha um mercado", scroll: "Faça scroll dentro da página", galTitle: "Mais campanhas", galText: "Abra qualquer página para a ver completa.", close: "Fechar" }
+  en: { kicker: "Campaign landing pages", title: "Campaign pages, built to convert", intro: "Product launches, TV and influencer campaigns, seasonal offers, prize draws and referral programmes, from Italy and Spain to the US and the Emirates. My team designed and built the landing pages for the paid campaigns, often one design rolled out to several markets at once.", pick: "Choose a market", scroll: "Scroll inside the page", galTitle: "More campaigns", galText: "Open any page to see it full length.", close: "Close" },
+  pt: { kicker: "Landing pages de campanha", title: "Páginas de campanha, feitas para converter", intro: "Lançamentos de produto, campanhas de TV e com influenciadores, ofertas sazonais, sorteios e programas de referência, de Itália e Espanha aos EUA e aos Emirados. A minha equipa desenhou e montou as landing pages das campanhas pagas, muitas vezes um design lançado em vários mercados ao mesmo tempo.", pick: "Escolha um mercado", scroll: "Faça scroll dentro da página", galTitle: "Mais campanhas", galText: "Abra qualquer página para a ver completa.", close: "Fechar" }
 };
