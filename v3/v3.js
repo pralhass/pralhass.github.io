@@ -79,7 +79,7 @@
       '<header class="case-head"><div><h1 class="display">' + esc(x.title) + '</h1><span class="tag">' + esc(x.tag) + '</span><p class="summary">' + esc(x.summary) + "</p></div></header>" +
       '<div class="case-cover card"><img src="' + IMG[c.slug] + '" alt=""></div>' +
       '<section class="story"><div class="card"><h2>' + u.challenge + "</h2><p>" + esc(x.challenge) + '</p></div><div class="card"><h2>' + u.approach + "</h2><p>" + esc(x.approach) + '</p></div><div class="card"><h2>' + u.result + "</h2><p>" + esc(x.result) + "</p></div></section>" +
-      (c.slug === "creative-testing" && window.ADS ? adsSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
+      (c.slug === "creative-testing" && window.ADS ? adsSections() : c.slug === "ai-production" && window.AI ? aiSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
       '<a class="next card" href="case.html?c=' + next.slug + '"><span class="label">' + u.next + '</span><span class="display">' + esc(next[lang].title) + "</span></a></main>";
   }
 
@@ -109,6 +109,38 @@
     }).join("");
     return '<section class="ads-wall"><div class="sec-head"><h2 class="display">' + ui.wall + "</h2><p>" + ui.wallText + '</p></div><div class="ads-grid">' + wall + "</div></section>" + bulks +
       '<div class="lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + ui.close + '</button><div class="lb-tabs"></div><div class="lb-stage"></div><p class="lb-cap"></p></div></div>';
+  }
+
+  // Featured AI process, only on the ai-production case.
+  function aiSections() {
+    var A = window.AI, x = A[lang], B = A.base;
+    function fig(src, cap, cls) { return '<figure class="' + (cls || "") + '"><img src="' + B + src + '.jpg" alt="' + esc(cap) + '" loading="lazy"><figcaption>' + esc(cap) + "</figcaption></figure>"; }
+    var P = x.phases, vis = [
+      '<div class="shots">' + P[0].shots.map(function (r) { return "<div><b>" + r[0] + "</b><span>" + esc(r[1]) + "</span></div>"; }).join("") + '</div><p class="ph-note">' + esc(P[0].note) + "</p>",
+      '<div class="refs">' + fig("character", P[1].caps[0], "wide") + fig("quarto", P[1].caps[1]) + fig("sala", P[1].caps[2]) + "</div>" +
+        '<p class="ph-sub">' + esc(P[1].product) + '</p><div class="prod">' + fig("packshot", P[1].caps[3], "pack") + fig("ref-motion", P[1].caps[4]) + fig("ref-button", P[1].caps[5]) + fig("ref-arrival", P[1].caps[6]) + "</div>",
+      '<div class="tall4">' + ["previs-quarto", "previs-botao", "previs-escadas", "previs-corrida"].map(function (f, i) { return fig(f, P[2].caps[i]); }).join("") + "</div>",
+      '<div class="tall4">' + P[3].cmp.map(function (c) {
+        return '<figure class="cmp" style="--p:50%"><div class="cmp-box"><img src="' + B + "cmp-" + c[0] + '-b.jpg" alt="" loading="lazy"><img class="cmp-top" src="' + B + "cmp-" + c[0] + '-a.jpg" alt="" loading="lazy"><span class="cmp-l">' + P[3].prev + '</span><span class="cmp-r">' + P[3].res + '</span><span class="cmp-bar"></span><input type="range" min="0" max="100" value="50" aria-label="' + esc(P[3].prev + " / " + P[3].res + ", " + c[1]) + '"></div><figcaption>' + esc(c[1]) + "</figcaption></figure>";
+      }).join("") + '</div><div class="speech"><p>' + esc(P[3].speech) + '</p><div class="fala">' + [1, 2, 3].map(function (k) { return '<img src="' + B + "fala-" + k + '.jpg" alt="" loading="lazy">'; }).join("") + "</div></div>",
+      "",
+      '<div class="tall4">' + [1, 2, 3, 4].map(function (k) { return fig("sub-v" + k, P[5].caps[k - 1]); }).join("") + "</div>",
+      ""
+    ];
+    var phases = P.map(function (ph, i) {
+      return '<article class="phase card' + (vis[i] ? "" : " slim") + '"><div class="ph-head"><span class="ph-n">' + (i + 1) + '</span><h3>' + esc(ph.t) + '</h3><span class="tag">' + esc(ph.tools) + '</span></div><div class="ph-body"><p>' + esc(ph.d) + "</p>" + vis[i] + "</div></article>";
+    }).join("");
+    return '<section class="ai-feature card"><div class="phone"><video controls playsinline preload="metadata" poster="' + A.video + '.jpg" src="' + A.video + '.mp4"></video></div>' +
+      '<div class="ai-intro"><span class="tag">' + x.kicker + '</span><h2 class="display">' + esc(x.title) + "</h2><p>" + esc(x.intro) + '</p><div class="ai-stats">' +
+      x.stats.map(function (s) { return "<div><b>" + s[0] + "</b><span>" + esc(s[1]) + "</span></div>"; }).join("") + "</div></div></section>" +
+      '<section class="ai-process"><div class="sec-head"><h2 class="display">' + x.processTitle + "</h2></div>" + phases + "</section>" +
+      '<section class="ai-learn"><h2 class="display">' + x.learnTitle + '</h2><div class="learn-grid">' + x.learn.map(function (l) { return '<div class="card"><h3>' + esc(l[0]) + "</h3><p>" + esc(l[1]) + "</p></div>"; }).join("") + "</div></section>";
+  }
+
+  function bindAI() {
+    document.querySelectorAll(".cmp input").forEach(function (r) {
+      r.addEventListener("input", function () { r.closest(".cmp").style.setProperty("--p", r.value + "%"); });
+    });
   }
 
   function bindAds() {
@@ -161,7 +193,7 @@
     var page = document.body.dataset.page;
     document.getElementById("app").innerHTML = top() + (page === "case" ? casePage() : home());
     if (page === "home") document.title = "Paulo Ralha | Portfolio";
-    bindAds();
+    bindAds(); bindAI();
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.addEventListener("click", function () { lang = b.dataset.lang; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
     });
