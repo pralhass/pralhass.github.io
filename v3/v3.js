@@ -34,12 +34,16 @@
 
   function top() {
     var u = S.ui[lang], home = document.body.dataset.page === "home" ? "" : "index.html";
+    var menu = lang === "pt" ? "Menu" : "Menu";
     return '<header class="wrap top"><a class="mark" href="index.html">Paulo Ralha</a><nav aria-label="Main">' +
+      '<div class="nav-menu" id="nav-menu">' +
       '<a href="' + home + '#work">' + u.nav.work + '</a><a href="' + home + '#about">' + u.nav.about + '</a><a href="' + home + '#contact">' + u.nav.contact + "</a>" +
+      '<span class="nav-lang"><button type="button" data-lang="pt" aria-pressed="' + (lang === "pt") + '">PT</button>' +
+      '<button type="button" data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button></span></div>' +
       '<a class="nav-cv" href="../assets/cv/paulo-ralha-cv-' + lang + '.pdf" target="_blank" rel="noopener">' + (lang === "pt" ? "Descarregar CV" : "Download CV") + "</a>" +
-      '<button type="button" data-lang="pt" aria-pressed="' + (lang === "pt") + '">PT</button>' +
-      '<button type="button" data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button></nav></header>';
+      '<button type="button" class="nav-burger" aria-expanded="false" aria-controls="nav-menu" aria-label="' + menu + '"><span></span><span></span><span></span></button></nav></header>';
   }
+
 
   function cvLink(l, label) { return '<a href="../assets/cv/paulo-ralha-cv-' + l + '.pdf" target="_blank" rel="noopener">' + esc(label) + "</a>"; }
 
@@ -180,6 +184,15 @@
     return '<section class="lp-camp"><div class="lp-camp-head"><span class="tag">' + u.kicker + '</span><h2 class="display">' + esc(u.title) + "</h2><p>" + esc(u.intro) + "</p></div>" + rolls +
       '<div class="sec-head lp-gal-head"><h2 class="display">' + u.galTitle + "</h2><p>" + u.galText + '</p></div><div class="lp-gal">' + gal + "</div>" +
       '<div class="lb lp-lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + u.close + '</button><div class="lb-tabs lp-lb-tabs"></div><div class="lp-lb-view" tabindex="0"><img alt=""></div><p class="lb-cap"></p></div></div></section>';
+  }
+
+  function bindNav() {
+    var b = document.querySelector(".nav-burger"), m = document.getElementById("nav-menu"); if (!b || !m) return;
+    function set(o) { b.setAttribute("aria-expanded", o); m.classList.toggle("open", o); }
+    b.addEventListener("click", function (e) { e.stopPropagation(); set(b.getAttribute("aria-expanded") !== "true"); });
+    m.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { set(false); }); });
+    document.addEventListener("click", function (e) { if (!m.contains(e.target)) set(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && b.getAttribute("aria-expanded") === "true") { set(false); b.focus(); } });
   }
 
   function bindLP() {
@@ -336,7 +349,7 @@
     var page = document.body.dataset.page;
     document.getElementById("app").innerHTML = top() + (page === "case" ? casePage() : home());
     if (page === "home") document.title = "Paulo Ralha | Portfolio";
-    bindAds(); bindAI(); bindTV(); bindLP();
+    bindAds(); bindAI(); bindTV(); bindLP(); bindNav();
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.addEventListener("click", function () { lang = b.dataset.lang; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
     });
