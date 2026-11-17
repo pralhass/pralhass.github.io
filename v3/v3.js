@@ -79,8 +79,74 @@
       '<header class="case-head"><div><h1 class="display">' + esc(x.title) + '</h1><span class="tag">' + esc(x.tag) + '</span><p class="summary">' + esc(x.summary) + "</p></div></header>" +
       '<div class="case-cover card"><img src="' + IMG[c.slug] + '" alt=""></div>' +
       '<section class="story"><div class="card"><h2>' + u.challenge + "</h2><p>" + esc(x.challenge) + '</p></div><div class="card"><h2>' + u.approach + "</h2><p>" + esc(x.approach) + '</p></div><div class="card"><h2>' + u.result + "</h2><p>" + esc(x.result) + "</p></div></section>" +
-      '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>" +
+      (c.slug === "creative-testing" && window.ADS ? adsSections() : '<section class="gallery r' + c.ratio.replace("/", "x") + '" aria-label="' + u.gallery + '">' + slots + "</section>") +
       '<a class="next card" href="case.html?c=' + next.slug + '"><span class="label">' + u.next + '</span><span class="display">' + esc(next[lang].title) + "</span></a></main>";
+  }
+
+
+  // Ads wall + bulk rollout, only on the creative-testing case.
+  function adsSections() {
+    var A = window.ADS, ui = A.ui[lang], b = A.bulk, bt = b[lang];
+    var wall = A.loose.map(function (a, i) {
+      var x = a[lang], src = A.base + a.file + "-post";
+      var media = a.video
+        ? '<video muted loop playsinline preload="none" poster="' + src + '.jpg" data-src="' + src + '.mp4"></video>'
+        : '<img src="' + src + '.jpg" alt="" loading="lazy">';
+      return '<button type="button" class="ad card" data-ad="' + i + '"><span class="ad-media">' + media + "</span>" +
+        '<span class="ad-txt"><span class="tag">' + esc(a.market[lang]) + "</span><strong>" + esc(x.t) + "</strong><span>" + esc(x.d) + "</span></span></button>";
+    }).join("");
+    var tiles = b.markets.map(function (m, i) {
+      var src = A.base + "bulk/" + m.k;
+      return '<button type="button" class="mk" data-bulk="' + i + '"><video muted loop playsinline autoplay preload="metadata" poster="' + src + '.jpg" src="' + src + '-loop.mp4"></video>' +
+        '<span class="mk-name">' + esc(m[lang]) + "</span>" + (m.ctr ? '<span class="mk-ctr">' + m.ctr + " CTR</span>" : "") + "</button>";
+    }).join("");
+    return '<section class="ads-wall"><div class="sec-head"><h2 class="display">' + ui.wall + "</h2><p>" + ui.wallText + '</p></div><div class="ads-grid">' + wall + "</div></section>" +
+      '<section class="bulk card"><div class="bulk-head"><h2 class="display">' + bt.title + "</h2><p>" + bt.text + '</p></div><div class="mk-grid">' + tiles + "</div></section>" +
+      '<div class="lb" hidden><div class="lb-box"><button type="button" class="lb-x">' + ui.close + '</button><div class="lb-tabs"></div><div class="lb-stage"></div><p class="lb-cap"></p></div></div>';
+  }
+
+  function bindAds() {
+    var A = window.ADS; if (!A || !document.querySelector(".ads-wall")) return;
+    var ui = A.ui[lang];
+    // Play wall videos only while on screen.
+    var io = "IntersectionObserver" in window ? new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; v.play().catch(function () {}); } else v.pause();
+      });
+    }, { threshold: 0.4 }) : null;
+    document.querySelectorAll(".ads-grid video").forEach(function (v) { if (io) io.observe(v); else v.src = v.dataset.src; });
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.querySelectorAll(".mk video").forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
+
+    var lb = document.querySelector(".lb"), stage = lb.querySelector(".lb-stage"), tabs = lb.querySelector(".lb-tabs"), cap = lb.querySelector(".lb-cap");
+    function show(src, isVideo) {
+      stage.innerHTML = isVideo ? '<video controls autoplay playsinline src="' + src + '.mp4" poster="' + src + '.jpg"></video>' : '<img src="' + src + '.jpg" alt="">';
+    }
+    function open() { lb.hidden = false; document.body.style.overflow = "hidden"; lb.querySelector(".lb-x").focus(); }
+    function close() { lb.hidden = true; stage.innerHTML = ""; document.body.style.overflow = ""; }
+    lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("lb-x")) close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) close(); });
+    document.querySelectorAll("[data-ad]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var a = A.loose[+btn.dataset.ad], base = A.base + a.file;
+        tabs.innerHTML = '<button type="button" aria-pressed="true" data-f="post">' + ui.feed + '</button><button type="button" aria-pressed="false" data-f="story">' + ui.story + "</button>";
+        tabs.querySelectorAll("button").forEach(function (t) {
+          t.addEventListener("click", function () {
+            tabs.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", o === t); });
+            show(base + "-" + t.dataset.f, a.video);
+          });
+        });
+        cap.textContent = a[lang].t + " | " + a.market[lang];
+        show(base + "-post", a.video); open();
+      });
+    });
+    document.querySelectorAll("[data-bulk]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var m = A.bulk.markets[+btn.dataset.bulk];
+        tabs.innerHTML = ""; cap.textContent = A.bulk[lang].title + " | " + m[lang] + (m.ctr ? " (" + A.bulk[lang].ctr + " " + m.ctr + ")" : "");
+        show(A.base + "bulk/" + m.k, true); open();
+      });
+    });
   }
 
   function render() {
@@ -88,6 +154,7 @@
     var page = document.body.dataset.page;
     document.getElementById("app").innerHTML = top() + (page === "case" ? casePage() : home());
     if (page === "home") document.title = "Paulo Ralha | Portfolio";
+    bindAds();
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.addEventListener("click", function () { lang = b.dataset.lang; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
     });
