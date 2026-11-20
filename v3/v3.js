@@ -37,7 +37,7 @@
     var menu = lang === "pt" ? "Menu" : "Menu";
     return '<header class="wrap top"><a class="mark" href="index.html">Paulo Ralha</a><nav aria-label="Main">' +
       '<div class="nav-menu" id="nav-menu">' +
-      '<a href="' + home + '#work">' + u.nav.work + '</a><a href="' + home + '#about">' + u.nav.about + '</a><a href="' + home + '#contact">' + u.nav.contact + "</a>" +
+      '<a href="' + home + '#reel">Showreel</a><a href="' + home + '#work">' + u.nav.work + '</a><a href="' + home + '#about">' + u.nav.about + '</a><a href="' + home + '#contact">' + u.nav.contact + "</a>" +
       '<span class="nav-lang"><button type="button" data-lang="pt" aria-pressed="' + (lang === "pt") + '">PT</button>' +
       '<button type="button" data-lang="en" aria-pressed="' + (lang === "en") + '">EN</button></span></div>' +
       '<a class="nav-cv" href="../assets/cv/paulo-ralha-cv-' + lang + '.pdf" target="_blank" rel="noopener">' + (lang === "pt" ? "Descarregar CV" : "Download CV") + "</a>" +
@@ -62,8 +62,12 @@
     }).join("");
     return '<main class="wrap">' +
       '<section class="hero"><div class="word-row"><h1 class="word" aria-label="Portfolio">P<span class="pill" aria-hidden="true"></span>rtfolio</h1><img class="smile" src="' + IMG.smile + '" alt=""></div>' +
-      '<div class="hero-sub"><div><p class="who">Paulo Ralha, ' + u.role + '</p><p class="intro">' + esc(u.intro) + '</p><div class="hero-cta"><a class="btn-cv" href="../assets/cv/paulo-ralha-cv-' + lang + '.pdf" target="_blank" rel="noopener">' + (lang === "pt" ? "Descarregar CV (PDF)" : "Download CV (PDF)") + '</a><a class="btn-ln" href="' + S.linkedin + '" target="_blank" rel="noopener">LinkedIn</a></div></div>' +
+      '<div class="hero-sub"><div><p class="who">Paulo Ralha, ' + u.role + '</p><p class="intro">' + esc(u.intro) + '</p><div class="hero-cta"><a class="btn-reel" href="#reel">' + (lang === "pt" ? "Ver showreel" : "Watch showreel") + '</a><a class="btn-cv" href="../assets/cv/paulo-ralha-cv-' + lang + '.pdf" target="_blank" rel="noopener">' + (lang === "pt" ? "Descarregar CV (PDF)" : "Download CV (PDF)") + '</a><a class="btn-ln" href="' + S.linkedin + '" target="_blank" rel="noopener">LinkedIn</a></div></div>' +
       '<img class="badge" src="' + IMG.badge + '" alt=""></div></section>' +
+
+      '<section id="reel" class="reel card"><h2 class="display">Showreel</h2>' +
+      '<div class="reel-frame"><video controls playsinline preload="none" poster="../media/reel/showreel-poster.jpg" aria-label="Showreel 2026">' +
+      '<source src="../media/reel/showreel-16x9.mp4" type="video/mp4"></video></div></section>' +
 
       '<section id="about" class="behind card"><div><h2 class="display">' + t.behind + "</h2>" +
       S.about[lang].map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("") + '</div><img class="hand" src="' + IMG.hand + '" alt=""></section>' +
