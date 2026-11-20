@@ -65,10 +65,6 @@
       '<div class="hero-sub"><div><p class="who">Paulo Ralha, ' + u.role + '</p><p class="intro">' + esc(u.intro) + '</p><div class="hero-cta"><a class="btn-reel" href="#reel">' + (lang === "pt" ? "Ver showreel" : "Watch showreel") + '</a><a class="btn-cv" href="../assets/cv/paulo-ralha-cv-' + lang + '.pdf" target="_blank" rel="noopener">' + (lang === "pt" ? "Descarregar CV (PDF)" : "Download CV (PDF)") + '</a><a class="btn-ln" href="' + S.linkedin + '" target="_blank" rel="noopener">LinkedIn</a></div></div>' +
       '<img class="badge" src="' + IMG.badge + '" alt=""></div></section>' +
 
-      '<section id="reel" class="reel card"><h2 class="display">Showreel</h2>' +
-      '<div class="reel-frame"><video controls playsinline preload="none" poster="../media/reel/showreel-poster.jpg" aria-label="Showreel 2026">' +
-      '<source src="../media/reel/showreel-16x9.mp4" type="video/mp4"></video></div></section>' +
-
       '<section id="about" class="behind card"><div><h2 class="display">' + t.behind + "</h2>" +
       S.about[lang].map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("") + '</div><img class="hand" src="' + IMG.hand + '" alt=""></section>' +
 
@@ -77,6 +73,10 @@
 
       '<section id="work"><div class="proj-head"><h2 class="display">' + t.projects + '</h2><img src="' + IMG.tv + '" alt=""></div>' +
       '<div class="projects">' + projects + "</div></section>" +
+
+      '<section id="reel" class="reel card"><h2 class="display">Showreel</h2>' +
+      '<div class="reel-frame"><video controls playsinline preload="none" poster="../media/reel/showreel-poster.jpg" aria-label="Showreel 2026">' +
+      '<source src="../media/reel/showreel-16x9.mp4" type="video/mp4"></video></div></section>' +
 
       '<section id="contact" class="contact card"><h2 class="display">' + u.contact + "</h2><p>" + esc(u.contactText) + "</p>" +
       '<a class="mail" href="mailto:' + S.email + '">' + S.email + "</a>" +
